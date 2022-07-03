@@ -1,9 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently \"next dev\" \"yarn serve-fakeapi\"",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "serve-fakeapi": "json-server --watch db.json --port 8001"
   },
   "dependencies": {
     "moment": "^2.29.3",
