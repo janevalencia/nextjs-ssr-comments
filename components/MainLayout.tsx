@@ -7,7 +7,12 @@ const MainLayout = ( { children } : { children: ReactNode } ) => {
         <>
             <Header />
             { children }
-            <Footer />
+            <Footer 
+                github="https://github.com/janevalencia" 
+                instagram="https://www.instagram.com/janevlencia/" 
+                linkedin="https://www.linkedin.com/in/janevalencia/" 
+                medium="https://medium.com/@janevalencia"
+            />
         </>
     );
 }
