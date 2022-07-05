@@ -19,8 +19,9 @@
     /* Font */
     --site-font: 'Rubik', sans-serif;
     --font-size: 16px;
-    --lg-font-size: 2rem;
-    --md-font-size: 1.2rem;
+    --lg-font-size: 1.5rem;
+    --md2-font-size: 1.2rem;
+    --md3-font-size: 1.1rem;
     --normal-font-size: 1rem;
     --sm-font-size: 0.813rem;
     --smaller-font-size: 0.75rem;
@@ -31,5 +32,6 @@
     /* Responsive Width */
     @media screen and (min-width: 768px) {
         --max-width: 1440px;
+        --lg-font-size: 2rem;
     }
 }
