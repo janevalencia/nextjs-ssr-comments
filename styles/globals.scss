@@ -1,23 +1,8 @@
+// Tailwind Modules.
 @import 'tailwindcss/base.css';
 @import 'tailwindcss/components.css';
 @import 'tailwindcss/utilities.css';
 
-:root {
-    --site-color: #52b3d0;
-}
-
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-    background-color: var(--site-color);
-}
+// Sass Modules.
+@import 'config/variables';
+@import 'base/base';
