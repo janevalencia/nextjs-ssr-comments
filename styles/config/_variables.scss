@@ -29,6 +29,9 @@
     --fw-normal: 500;
     --fw-bold: 700;
 
+    /* Effect: Transition */
+    --trans-length: 0.5s;
+
     /* Responsive Width */
     @media screen and (min-width: 768px) {
         --max-width: 1440px;
