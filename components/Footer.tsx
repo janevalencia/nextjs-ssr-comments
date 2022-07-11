@@ -21,7 +21,7 @@ type FooterProps = {
 
 const Footer = ( props : FooterProps) => {
   return (
-    <footer className="footer p-2 md:p-8">
+    <footer className="footer p-4 md:p-8">
       <section className="footer__main flex flex-col md:flex-row justify-between gap-4 my-4">
         {/* Author, Copyright, Brand */}
         <div className="footer__brand-copyright">
