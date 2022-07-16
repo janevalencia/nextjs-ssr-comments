@@ -9,4 +9,12 @@
             opacity: 1;
         }
     }
+
+    &__delete {
+        color: var(--primary-soft-red);
+    }
+
+    &__edit, &__reply {
+        color: var(--secondary-greyish-blue);
+    }
 }
