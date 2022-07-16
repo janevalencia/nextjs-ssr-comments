@@ -18,11 +18,13 @@ const SampleUser = {
 const CommentCard = () => {
     const { id, content, createdAt, score, user, replies } = SampleUser;
     return (
-        <div className="comment-card flex flex-row justify-start items-top gap-2">
-            <Vote />
-            <div className="flex flex-col gap-2 px-2">
-                <div className="comment-card__user flex flex-row items-center gap-3 h-auto">
-                    <div className="relative overflow-hidden">
+        <div className="comment-card grid grid-rows-3 grid-flow-col gap-x-4 gap-y-2">
+            <div className="row-span-3">
+                <Vote />
+            </div>
+            <div className="comment-card__user col-span-3">
+                <div className="flex flex-row justify-start items-center gap-2">
+                    <div className="comment-card__user profile-img relative overflow-hidden flex items-center">
                         <Image 
                             src={ user.image.png } 
                             alt={ user.username }
@@ -34,9 +36,9 @@ const CommentCard = () => {
                     <p className="comment-card__user username">{ user.username }</p>
                     <span className="comment-card__user date">{ createdAt }</span>
                 </div>
-                <div className="comment-card__description">
-                    <p>{ content }</p>
-                </div>
+            </div>
+            <div className="comment-card__content row-span-2 col-span-3">
+                <p>{ content }</p>
             </div>
         </div>
     );
