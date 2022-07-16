@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Vote } from "../components";
+import Vote from "./Vote";
 
 // To be deleted later once DB is setup.
 const SampleUser = {
