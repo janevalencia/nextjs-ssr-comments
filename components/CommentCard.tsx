@@ -12,7 +12,7 @@ const SampleUser = {
         "png": "/assets/images/image-amyrobson.png"
       },
       "username": "amyrobson",
-      "active": true,
+      "active": false,
     },
     "replies": [
         {
@@ -48,9 +48,13 @@ const CommentCard = () => {
     const { id, content, createdAt, score, user, replies } = SampleUser;
     return (
         <div className="comment-card grid grid-flow-col md:grid-rows-3 gap-x-4 gap-y-2">
+
+            {/* Comment-Voting */}
             <div className="row-start-2 md:row-span-3 col-end-1">
                 <Vote votes={ score } />
             </div>
+
+            {/* Comment-User */}
             <div className="comment-card__user md:row-start-1 row-end-1 col-span-4 md:col-span-1">
                 <div className="flex flex-row justify-start items-center gap-2 pt-1">
                     <div className="comment-card__user profile-img relative overflow-hidden flex items-center">
@@ -63,9 +67,12 @@ const CommentCard = () => {
                         />
                     </div>
                     <p className="comment-card__user username">{ user.username }</p>
+                    { user.active && (<span className="username username__active px-2">you</span>) }
                     <span className="comment-card__user date">{ createdAt }</span>
                 </div>
             </div>
+
+            {/* Comment-CTA-buttons */}
             <div className="comment-card__cta row-start-2 md:row-start-1 col-end-4 flex">
                 { ! user.active ? (
                     <a href="" className="button button__reply flex flex-row items-center gap-x-2">
@@ -85,6 +92,8 @@ const CommentCard = () => {
                     </div>
                 )}
             </div>
+
+            {/* Comment-Content */}
             <div className="comment-card__content md:row-span-2 col-span-4 md:col-span-3">
                 <p>{ content }</p>
             </div>

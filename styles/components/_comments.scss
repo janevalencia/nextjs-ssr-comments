@@ -10,6 +10,12 @@
             color: var(--secondary-dark-blue);
             font-size: var(--sm-font-size);
             font-weight: var(--fw-bold);
+
+            &__active {
+                background-color: var(--primary-blue);
+                color: var(--secondary-white);
+                font-size: var(--smaller-font-size);
+            }
         }
 
         .date {
