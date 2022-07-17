@@ -17,4 +17,17 @@
     &__edit, &__reply {
         color: var(--secondary-greyish-blue);
     }
+
+    &__cta {
+        background-color: var(--primary-blue);
+        color: var(--secondary-white);
+        opacity: 0.9;
+        transition: opacity var(--trans-length) ease-in;
+        
+        &:hover {
+            background-color: var(--primary-blue);
+            cursor: pointer;
+            opacity: 1;
+        }
+    }
 }
