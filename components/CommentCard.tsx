@@ -5,7 +5,7 @@ import { CommentProps } from "../types";
 const CommentCard = ( props : CommentProps ) => {
     return (
         <>
-            <div className="comment-card__item p-4 w-full mb-2 rounded-md">
+            <div className="comment-card__item p-4 mb-2 rounded-md">
                 <div className="grid grid-flow-col md:grid-rows-3 gap-x-4 gap-y-2">
 
                     {/* Comment-Voting */}
