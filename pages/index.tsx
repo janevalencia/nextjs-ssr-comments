@@ -24,7 +24,7 @@ const SampleData = [{
         "replyingTo": "maxblagun",
         "user": {
           "image": { 
-            "png": "./images/avatars/image-ramsesmiron.png"
+            "png": "/assets/images/image-ramsesmiron.png"
           },
           "username": "ramsesmiron",
           "loggedInUser": false,
@@ -38,7 +38,7 @@ const SampleData = [{
         "replyingTo": "ramsesmiron",
         "user": {
           "image": { 
-            "png": "./images/avatars/image-juliusomo.png"
+            "png": "/assets/images/image-juliusomo.png"
           },
           "username": "juliusomo",
           "loggedInUser": true,
@@ -55,9 +55,9 @@ const Home: NextPage = () => {
         <meta name="description" content="Solution for Frontend Mentor Comment-Challenge using React, NextJS, and TailwindCSS." />
       </Head>
       <main className="section flex min-h-screen flex-col justify-top p-4 md:p-8">
-        <section className="comments-thread flex flex-col mb-6 w-full">
+        <section className="flex flex-col mb-6 w-full">
           {SampleData.map( (data) => (
-            <article className="comments-thread__item p-4 w-full mb-2 rounded-md">
+            <article>
               <CommentCard {...data}/>
             </article>
           ) )}
