@@ -1,0 +1,8 @@
+.voting {
+    background-color: var(--secondary-light-gray);
+
+    &__digit {
+        color: var(--primary-blue);
+        font-weight: var(--fw-bold);
+    }
+}
