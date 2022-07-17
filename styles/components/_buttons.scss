@@ -1,0 +1,20 @@
+.button {
+    &__upvote, &__downvote {
+        color: var(--secondary-greyish-blue);
+        font-weight: var(--fw-bold);
+        opacity: 0.4;
+        transition: opacity var(--trans-length) ease-in;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    &__delete {
+        color: var(--primary-soft-red);
+    }
+
+    &__edit, &__reply {
+        color: var(--secondary-greyish-blue);
+    }
+}

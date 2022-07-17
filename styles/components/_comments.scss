@@ -1,0 +1,35 @@
+.comment-card {
+    &__item {
+        background-color: var(--secondary-white);
+    }
+
+    &__user {
+        .username {
+            color: var(--secondary-dark-blue);
+            font-size: var(--sm-font-size);
+            font-weight: var(--fw-bold);
+
+            &__active {
+                background-color: var(--primary-blue);
+                color: var(--secondary-white);
+                font-size: var(--smaller-font-size);
+            }
+        }
+
+        .date {
+            color: var(--secondary-greyish-blue);
+            font-size: var(--sm-font-size);
+        }
+    }
+
+    &__content {
+        color: var(--secondary-greyish-blue);
+    }
+}
+
+.comment-reply {
+    &__line {
+        border-left: 2px solid var(--secondary-greyish-blue);
+        opacity: 0.2;
+    }
+}
