@@ -1,10 +1,8 @@
-.comments-thread {
+.comment-card {
     &__item {
         background-color: var(--secondary-white);
     }
-}
 
-.comment-card {
     &__user {
         .username {
             color: var(--secondary-dark-blue);
@@ -26,5 +24,12 @@
 
     &__content {
         color: var(--secondary-greyish-blue);
+    }
+}
+
+.comment-reply {
+    &__line {
+        border-left: 2px solid var(--secondary-greyish-blue);
+        opacity: 0.2;
     }
 }
