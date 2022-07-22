@@ -8,7 +8,6 @@ const CurrentUser = {
     "png": "/assets/images/image-juliusomo.png"
   },
   "username": "juliusomo",
-  "loggedInUser": true,
 }
 const SampleData = [
   {
@@ -21,7 +20,6 @@ const SampleData = [
         "png": "/assets/images/image-amyrobson.png"
       },
       "username": "amyrobson",
-      "loggedInUser": false,
     },
     "replies": []
   },
@@ -35,7 +33,6 @@ const SampleData = [
         "png": "/assets/images/image-maxblagun.png"
       },
       "username": "maxblagun",
-      "loggedInUser": false,
     },
     "replies": [
       {
@@ -49,7 +46,6 @@ const SampleData = [
             "png": "/assets/images/image-ramsesmiron.png"
           },
           "username": "ramsesmiron",
-          "loggedInUser": false,
         }
       },
       {
@@ -63,7 +59,6 @@ const SampleData = [
             "png": "/assets/images/image-juliusomo.png"
           },
           "username": "juliusomo",
-          "loggedInUser": true,
         }
       }
     ]
@@ -81,7 +76,7 @@ const Home: NextPage = () => {
         <section className="flex flex-col mb-6 w-full">
           {SampleData.map( (data) => (
             <article key={data.id}>
-              <CommentCard {...data}/>
+              <CommentCard currentUser={CurrentUser} comment={data} />
             </article>
           ) )}
         </section>
