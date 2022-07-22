@@ -8,7 +8,6 @@ const CurrentUser = {
     "png": "/assets/images/image-juliusomo.png"
   },
   "username": "juliusomo",
-  "loggedInUser": true,
 }
 const SampleData = [
   {
@@ -21,7 +20,6 @@ const SampleData = [
         "png": "/assets/images/image-amyrobson.png"
       },
       "username": "amyrobson",
-      "loggedInUser": false,
     },
     "replies": []
   },
@@ -35,7 +33,6 @@ const SampleData = [
         "png": "/assets/images/image-maxblagun.png"
       },
       "username": "maxblagun",
-      "loggedInUser": false,
     },
     "replies": [
       {
@@ -49,7 +46,6 @@ const SampleData = [
             "png": "/assets/images/image-ramsesmiron.png"
           },
           "username": "ramsesmiron",
-          "loggedInUser": false,
         }
       },
       {
@@ -63,7 +59,6 @@ const SampleData = [
             "png": "/assets/images/image-juliusomo.png"
           },
           "username": "juliusomo",
-          "loggedInUser": true,
         }
       }
     ]
@@ -80,13 +75,13 @@ const Home: NextPage = () => {
       <main className="section flex min-h-screen flex-col justify-top p-4 md:p-8">
         <section className="flex flex-col mb-6 w-full">
           {SampleData.map( (data) => (
-            <article>
-              <CommentCard {...data}/>
+            <article key={data.id}>
+              <CommentCard currentUser={CurrentUser} comment={data} />
             </article>
           ) )}
         </section>
         <section className="comments-new">
-          <CommentForm user={ CurrentUser } />
+          <CommentForm currentUser={ CurrentUser } />
         </section>
       </main>
     </>

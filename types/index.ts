@@ -3,7 +3,6 @@ export type UserProps = {
         png : string,
     },
     username : string,
-    loggedInUser : boolean,
 }
 
 export type CommentProps = {
