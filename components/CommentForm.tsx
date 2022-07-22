@@ -8,18 +8,20 @@ type CommentFormProps = {
 };
 
 const CommentForm = ( { currentUser, replyingTo } : CommentFormProps ) => {
-    const [ comment, setComment ] = useState<string>("");
+    const [ commentContent, setCommentContent ] = useState<string>("");
     const [ isNew, setIsNew ] = useState<boolean>(true);
 
-    // Set isNew to false if there is a replyingTo username.
+    // Set isNew to false and default-value of commentContent, if there is a replyingTo username.
     useEffect(() => {
         if ( replyingTo ) {
             setIsNew(false);
+            setCommentContent(`@` + replyingTo + ` `);
         }
     }, [replyingTo]);
 
+    // Handle input change on comment text-area.
     const handleChange = ( e : React.ChangeEvent<HTMLTextAreaElement> ): void => {
-        setComment( e.target.value );
+        setCommentContent( e.target.value );
     }
     
     return (
@@ -35,10 +37,10 @@ const CommentForm = ( { currentUser, replyingTo } : CommentFormProps ) => {
                     />
                 </div>
                 <textarea 
-                    value={comment} 
+                    value={commentContent}
                     onChange={handleChange} 
-                    placeholder={ isNew ? `Add a comment...` : ``}
-                    className="comment-form__inputbox border rounded-md p-2 row-start-1 col-span-2 md:flex-grow"
+                    placeholder={ isNew ? "Add a comment..." : "" }
+                    className="comment-form__inputbox border rounded-md p-3 row-start-1 col-span-2 md:flex-grow"
                 />
                 <input 
                     type="submit" 
@@ -46,7 +48,7 @@ const CommentForm = ( { currentUser, replyingTo } : CommentFormProps ) => {
                     className="button button__cta rounded-lg w-28 h-12 row-start-2 justify-self-end"
                 />
             </form>
-        </div> 
+        </div>
     );
 }
 
