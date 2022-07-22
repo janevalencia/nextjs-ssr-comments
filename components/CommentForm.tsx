@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { UserProps } from "../types";
 
-const defaultCommentFormProps = {
-    isNew : true
-}
-
 type CommentFormProps = {
-    user : UserProps
-} & typeof defaultCommentFormProps;
+    currentUser : UserProps,
+    replyingTo?: string,
+};
 
-const CommentForm = ( { user, isNew } : CommentFormProps ) => {
+const CommentForm = ( { currentUser, replyingTo } : CommentFormProps ) => {
     const [ comment, setComment ] = useState<string>("");
+    const [ isNew, setIsNew ] = useState<boolean>(true);
+
+    // Set isNew to false if there is a replyingTo username.
+    useEffect(() => {
+        if ( replyingTo ) {
+            setIsNew(false);
+        }
+    }, [replyingTo]);
 
     const handleChange = ( e : React.ChangeEvent<HTMLTextAreaElement> ): void => {
         setComment( e.target.value );
@@ -22,8 +27,8 @@ const CommentForm = ( { user, isNew } : CommentFormProps ) => {
             <form className="grid grid-cols-2 gap-3 md:flex md:items-start">
                 <div className="comment-card__user profile-img relative overflow-hidden row-start-2 flex items-center">
                     <Image 
-                        src={ user.image.png } 
-                        alt={ user.username }
+                        src={ currentUser.image.png } 
+                        alt={ currentUser.username }
                         width={40} 
                         height={40} 
                         className="absolute rounded-full object-cover w-full"
@@ -44,6 +49,5 @@ const CommentForm = ( { user, isNew } : CommentFormProps ) => {
         </div> 
     );
 }
-CommentForm.defaultProps = defaultCommentFormProps;
 
 export default CommentForm;

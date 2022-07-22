@@ -86,7 +86,7 @@ const Home: NextPage = () => {
           ) )}
         </section>
         <section className="comments-new">
-          <CommentForm user={ CurrentUser } />
+          <CommentForm currentUser={ CurrentUser } />
         </section>
       </main>
     </>
