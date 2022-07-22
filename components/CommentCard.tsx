@@ -66,7 +66,7 @@ const CommentCard = ( props : CommentProps ) => {
                 <div className="flex flex-col pt-2">
                     {
                         props.replies.map( (reply) => (
-                            <article>
+                            <article key={reply.id}>
                                 <CommentCard {...reply}/>
                             </article>
                         ) ) 

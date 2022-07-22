@@ -80,7 +80,7 @@ const Home: NextPage = () => {
       <main className="section flex min-h-screen flex-col justify-top p-4 md:p-8">
         <section className="flex flex-col mb-6 w-full">
           {SampleData.map( (data) => (
-            <article>
+            <article key={data.id}>
               <CommentCard {...data}/>
             </article>
           ) )}
