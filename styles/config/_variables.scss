@@ -32,6 +32,9 @@
     /* Effect: Transition */
     --trans-length: 0.3s;
 
+    /* Effect: Translate */
+    --translate-effect: translate(-50%, -50%);
+
     /* Responsive Width */
     @media screen and (min-width: 768px) {
         --max-width: 1440px;
