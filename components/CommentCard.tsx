@@ -28,14 +28,6 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
     return (
         <>
             <div className="comment-card__item p-4 mb-2 rounded-md">
-                { openModal && ( 
-                    <Modal 
-                        setOn={setOpenModal} 
-                        title={`Delete comment`} 
-                        promptText={`Are you sure you want to delete this comment? This will remove the comment and can't be undone`} 
-                        btnType={'DELETE'} 
-                    />
-                ) }
                 <div className="grid grid-flow-col md:grid-rows-3 gap-x-4 gap-y-2">
 
                     {/* Comment-Voting */}
@@ -115,6 +107,15 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
                 </div>
                 ) }
             </div>
+
+            { openModal && ( 
+                    <Modal 
+                        setOn={setOpenModal} 
+                        title={`Delete comment`} 
+                        promptText={`Are you sure you want to delete this comment? This will remove the comment and can't be undone`} 
+                        btnType={'DELETE'} 
+                    />
+            ) }
         </>
     );
 }
