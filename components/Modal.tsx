@@ -2,12 +2,57 @@ import { Dispatch, SetStateAction } from 'react';
 
 type ModalProps = {
     setOn : Dispatch<SetStateAction<boolean>>,
+    title? : string,
+    promptText? : string,
+    btnType? : string,
 }
 
-const Modal = ( {setOn} : ModalProps ) => {
+const Modal = ( { setOn, title, promptText, btnType } : ModalProps ) => {
+
+    const deleteComment = () : void => {
+        // Temp: will be changed to run DELETE operation.
+        console.log( 'Comment deleted.' )
+
+        // Close Modal once delete is done!
+        setOn( false );
+    }
+
     return (
         <>
             <div className="transparent-bg" onClick={ () => setOn(false) } />
+            <div className="centered-effect">
+                <div className="modal">
+                    {/* Modal Heading */}
+                    <div className="modal__modal-heading">
+                        <h3 className="modal__modal-title">{title}</h3>
+                    </div>
+
+                    {/* Modal Prompt Text */}
+                    <div className="modal__modal-body">
+                        {promptText}
+                    </div>
+
+                    {/* Modal CTA */}
+                    <div className="flex flex-row justify-between modal__modal-btn">
+                        <button 
+                            className="modal__modal-btn-close"
+                            onClick={ () => setOn(false) }
+                        >
+                            NO, CANCEL
+                        </button>
+                        { btnType && btnType.toLowerCase() === 'delete' &&
+                            (
+                                <button 
+                                    className="modal__modal-btn-confirm-delete"
+                                    onClick={ deleteComment }
+                                >
+                                    YES, DELETE
+                                </button>
+                            )
+                        }
+                    </div>
+                </div>
+            </div>
         </>
     );
 }
