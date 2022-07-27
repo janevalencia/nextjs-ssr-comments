@@ -1,7 +1,8 @@
 .modal {
     background-color: var(--secondary-white);
     color: var(--secondary-white);
-    z-index: 10;
+    z-index: 100;
+    width: 375px;
 
     &__modal-heading {
         overflow: hidden;
@@ -9,7 +10,8 @@
 
     &__modal-title {
         color: var(--secondary-dark-blue);
-        font-size: var(--md3-font-size);
+        font-size: var(--md2-font-size);
+        line-height: var(--line-height);
         font-weight: var(--fw-bold);
     }
 
@@ -21,19 +23,26 @@
         cursor: pointer;
         font-weight: var(--fw-bold);
         text-align: center;
-        opacity: 0.9;
-        transition: opacity var(--trans-length) ease-in;
     }
 
     &__modal-btn-close {
         background-color: var(--secondary-greyish-blue);
+        border: 1px solid var(--primary-light-gray);
+        transition: all var(--trans-length) ease-in;
         
         &:hover {
-            opacity: 1;
+            background-color: transparent;
+            color: var(--primary-blue);
         }
     }
 
     &__modal-btn-confirm-delete {
         background-color: var(--primary-soft-red);
+        border: 1px solid var(--primary-light-gray);
+        transition: background-color var(--trans-length) ease-in;
+
+        &:hover {
+            background-color: var(--primary-blue);
+        }
     }
 }

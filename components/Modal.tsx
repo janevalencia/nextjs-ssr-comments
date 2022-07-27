@@ -21,21 +21,21 @@ const Modal = ( { setOn, title, promptText, btnType } : ModalProps ) => {
         <>
             <div className="transparent-bg" onClick={ () => setOn(false) } />
             <div className="centered-effect">
-                <div className="modal">
+                <div className="modal px-8 py-6 rounded-md">
                     {/* Modal Heading */}
                     <div className="modal__modal-heading">
                         <h3 className="modal__modal-title">{title}</h3>
                     </div>
 
                     {/* Modal Prompt Text */}
-                    <div className="modal__modal-body">
+                    <div className="modal__modal-body my-2">
                         {promptText}
                     </div>
 
                     {/* Modal CTA */}
-                    <div className="flex flex-row justify-between modal__modal-btn">
+                    <div className="flex flex-row justify-between gap-4 mt-4 modal__modal-btn">
                         <button 
-                            className="modal__modal-btn-close"
+                            className="modal__modal-btn-close p-3 rounded-md w-full"
                             onClick={ () => setOn(false) }
                         >
                             NO, CANCEL
@@ -43,7 +43,7 @@ const Modal = ( { setOn, title, promptText, btnType } : ModalProps ) => {
                         { btnType && btnType.toLowerCase() === 'delete' &&
                             (
                                 <button 
-                                    className="modal__modal-btn-confirm-delete"
+                                    className="modal__modal-btn-confirm-delete p-3 rounded-md w-full"
                                     onClick={ deleteComment }
                                 >
                                     YES, DELETE
