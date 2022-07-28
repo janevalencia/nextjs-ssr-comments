@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { UserProps } from "../types";
+import { Console } from "console";
 
 type CommentFormProps = {
     currentUser : UserProps,
     replyingTo?: string,
+    preContent?: string,
 };
 
-const CommentForm = ( { currentUser, replyingTo } : CommentFormProps ) => {
-    const [ commentContent, setCommentContent ] = useState<string>("");
+const CommentForm = ( { currentUser, replyingTo, preContent } : CommentFormProps ) => {
+    const [ commentContent, setCommentContent ] = useState<string>(preContent || "");
     const [ isNew, setIsNew ] = useState<boolean>(true);
 
     // Set isNew to false and default-value of commentContent, if there is a replyingTo username.
