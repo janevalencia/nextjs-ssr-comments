@@ -2,8 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Vote from "./Vote";
 import { UserProps, CommentProps } from "../types";
-import CommentForm from "./CommentForm";
-import Modal from "./Modal";
+import { CommentForm, Modal, EditForm } from "./";
 
 type CommentCardProps = {
     currentUser : UserProps,
@@ -38,7 +37,7 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
     return (
         <>
             <div className="comment-card__item p-4 mb-2 rounded-md">
-                <div className="grid grid-flow-col md:grid-rows-3 gap-x-4 gap-y-2">
+                <div className="grid grid-flow-col place-content-start md:grid-rows-3 gap-x-4 gap-y-2">
 
                     {/* Comment-Voting */}
                     <div className="row-start-2 md:row-span-3 col-end-1">
@@ -64,17 +63,18 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
                     </div>
 
                     {/* Comment-CTA-buttons */}
-                    <div className="comment-card__actions row-start-2 md:row-start-1 col-end-4 flex">
+                    <div className="comment-card__actions row-start-2 md:row-start-1 col-end-4 self-center">
+                        <div className="flex gap-6">
                         { comment.user.username !== currentUser.username ? (
                             <button
-                               className="button button__reply flex flex-row items-center gap-x-2"
-                               onClick={ toggleReplyForm }
+                                className="button button__reply flex flex-row items-center gap-x-2"
+                                onClick={ toggleReplyForm }
                             >
                                 <svg width="14" height="13" xmlns="http://www.w3.org/2000/svg"><path d="M.227 4.316 5.04.16a.657.657 0 0 1 1.085.497v2.189c4.392.05 7.875.93 7.875 5.093 0 1.68-1.082 3.344-2.279 4.214-.373.272-.905-.07-.767-.51 1.24-3.964-.588-5.017-4.829-5.078v2.404c0 .566-.664.86-1.085.496L.227 5.31a.657.657 0 0 1 0-.993Z" fill="#5357B6"/></svg>
                                 Reply
                             </button>
                         ) : (
-                            <div className="flex flex-row justify-end gap-6">
+                            <>
                                 <button 
                                     className="button button__delete flex flex-row items-center gap-x-2"
                                     onClick={ () => setOpenModal(true) }
@@ -89,13 +89,21 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
                                     <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M13.479 2.872 11.08.474a1.75 1.75 0 0 0-2.327-.06L.879 8.287a1.75 1.75 0 0 0-.5 1.06l-.375 3.648a.875.875 0 0 0 .875.954h.078l3.65-.333c.399-.04.773-.216 1.058-.499l7.875-7.875a1.68 1.68 0 0 0-.061-2.371Zm-2.975 2.923L8.159 3.449 9.865 1.7l2.389 2.39-1.75 1.706Z" fill="#5357B6"/></svg>
                                     Edit
                                 </button>
-                            </div>
+                            </>
                         )}
+                        </div>
                     </div>
 
                     {/* Comment-Content */}
                     <div className="comment-card__content md:row-span-2 col-span-4 md:col-span-3">
-                        <p>{ comment.content }</p>
+                    { showEditForm ? 
+                        (
+                            <EditForm comment={comment} />
+                        ) : 
+                        (
+                            <p>{ comment.content }</p>
+                        )
+                    }
                     </div>
                 </div>
             </div>
@@ -103,10 +111,6 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
             {/* Reply Form */}
             { showReplyForm && (
                 <CommentForm currentUser={currentUser} replyingTo={comment.user.username} />
-            ) }
-
-            { showEditForm && (
-                <CommentForm currentUser={currentUser} preContent={comment.content} />
             ) }
 
             {/* Comment-Replies */}
