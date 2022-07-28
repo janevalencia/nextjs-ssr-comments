@@ -18,7 +18,7 @@ const EditForm = ( { comment } : EditFormProps ) => {
             <textarea 
                 value={commentContent}
                 onChange={handleChange} 
-                className="comment-form__inputbox border rounded-md p-3"
+                className="edit-form__inputbox border rounded-md p-3"
             />
             <input 
                 type="submit" 

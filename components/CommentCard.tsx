@@ -37,7 +37,7 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
     return (
         <>
             <div className="comment-card__item p-4 mb-2 rounded-md">
-                <div className="grid grid-flow-col place-content-start md:grid-rows-3 gap-x-4 gap-y-2">
+                <div className="grid grid-flow-col place-content-start md:grid-cols-3 md:grid-rows-3 gap-x-4 gap-y-2">
 
                     {/* Comment-Voting */}
                     <div className="row-start-2 md:row-span-3 col-end-1">
@@ -45,7 +45,7 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
                     </div>
 
                     {/* Comment-User */}
-                    <div className="comment-card__user md:row-start-1 row-end-1 col-span-4 md:col-span-1">
+                    <div className="comment-card__user md:row-start-1 row-end-1 col-span-4 md:col-span-1 self-center">
                         <div className="flex flex-row justify-start items-center gap-2 pt-1">
                             <div className="comment-card__user profile-img relative overflow-hidden flex items-center">
                                 <Image 
@@ -63,7 +63,7 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
                     </div>
 
                     {/* Comment-CTA-buttons */}
-                    <div className="comment-card__actions row-start-2 md:row-start-1 col-end-4 self-center">
+                    <div className="comment-card__actions row-start-2 md:row-start-1 col-end-4 justify-self-end self-center">
                         <div className="flex gap-6">
                         { comment.user.username !== currentUser.username ? (
                             <button
