@@ -25,6 +25,11 @@
     &__content {
         color: var(--secondary-greyish-blue);
     }
+
+    &__replying-to {
+        color: var(--primary-blue);
+        font-weight: var(--fw-normal);
+    }
 }
 
 .comment-reply {
