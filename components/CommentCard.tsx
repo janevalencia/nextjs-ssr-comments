@@ -1,15 +1,16 @@
 import { useState } from "react";
 import Image from "next/image";
 import Vote from "./Vote";
-import { UserProps, CommentProps } from "../types";
+import { UserProps, CommentProps, ReplyProps } from "../types";
 import { CommentForm, Modal, EditForm } from "./";
 
 type CommentCardProps = {
     currentUser : UserProps,
     comment : CommentProps,
+    replyingTo?: string,
 };
 
-const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
+const CommentCard = ( { currentUser, comment, replyingTo } : CommentCardProps ) => {
 
     // Manage state of Reply Form toggle (display / hide).
     const [ showReplyForm, setShowReplyForm ] = useState<boolean>(false);
@@ -101,7 +102,7 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
                             <EditForm comment={comment} />
                         ) : 
                         (
-                            <p>{ comment.content }</p>
+                            <p>{ replyingTo && (<span className="comment-card__replying-to">@{replyingTo}</span>) } { comment.content }</p>
                         )
                     }
                     </div>
@@ -121,7 +122,7 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
                     {
                         comment.replies.map( (reply) => (
                             <article key={reply.id}>
-                                <CommentCard currentUser={currentUser} comment={reply} />
+                                <CommentCard currentUser={currentUser} comment={reply} replyingTo={reply.replyingTo} />
                             </article>
                         ) ) 
                     }
