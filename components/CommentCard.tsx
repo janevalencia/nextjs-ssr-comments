@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Vote from "./Vote";
-import { UserProps, CommentProps, ReplyProps } from "../types";
+import { UserProps, CommentProps } from "../types";
 import { CommentForm, Modal, EditForm } from "./";
 
 type CommentCardProps = {
