@@ -12,38 +12,33 @@ Thanks for checking out this front-end coding challenge.
 
 **To do this challenge, you need a strong understanding of HTML, CSS and JavaScript.**
 
+Your challenge is to build out this interactive comments section and get it looking as close to the design as possible. You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
+
+We provide the sample data in a local `db.json` file to get you started! If you want to take it up a notch, feel free to build this as a full-stack CRUD application! 🚀
+
 For the solution I develop here, I am taking it slightly further by using:
-- React framework: NextJS with Typescript
+- Full-stack React App with NextJS with Typescript
 - TailwindCSS
 - SASS
+- MongoDB / Mongoose
 
-You are free to choose other framework to craft your solution for this fun challenge!
-
-## The challenge
-
-Your challenge is to build out this interactive comments section and get it looking as close to the design as possible.
-
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-We provide the data in a local `data.json` file, so use that to populate the content on the first load. If you want to take it up a notch, feel free to build this as a full-stack CRUD application! 🚀
+Again, you are free to choose other framework to craft your solution for this fun challenge!
 
 ### Requirement
 
 Your users should be able to:
 
-- View the optimal layout for the app depending on their device's screen size
-- See hover states for all interactive elements on the page
-- Create, Read, Update, and Delete comments and replies
-- Upvote and downvote comments
+- View the optimal layout for the app depending on their device's screen size (mobile & desktop).
+- See hover states for all interactive elements on the page.
+- Create, Read, Update, and Delete comments and replies.
+- Upvote and downvote comments.
 - **Bonus**: If you're building a purely front-end project, use `localStorage` to save the current state in the browser that persists when the browser is refreshed.
 - **Bonus**: Instead of using the `createdAt` strings from the `data.json` file, try using timestamps and dynamically track the time since the comment or reply was posted.
-
-### Acceptance Criteria
-
-- First-level comments should be ordered by their score, whereas nested replies are ordered by time added.
+- First-level comments should be ordered by their score.
+- Nested replies are ordered by time added (earliest to latest).
 - Replying to a comment adds the new reply to the bottom of the nested replies within that comment.
 - A confirmation modal should pop up before a comment or reply is deleted.
-- Adding a new comment or reply uses the `currentUser` object from within the `data.json` file.
+- Adding a new comment or reply uses the `currentUser` object from within the `db.json` file (or if you have used db / localStorage to store `currentUser`).
 - You can only edit or delete your own comments and replies.
 
 ## Assets
@@ -54,11 +49,11 @@ The designs are in JPG static format. Using JPGs will mean that you'll need to u
 
 You will find all the required assets in the `/design/assets` folder. The assets are already optimized.
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+There is also a `style-guide.md` [file here](https://github.com/janevalencia/fem-comments/blob/staging/style-guide.md), containing the information you'll need, such as color palette and fonts.
 
-## Development Tips
+## Development
 
-Feel free to use any workflow that you feel comfortable with! 
+Feel free to use any project management and development workflow that you feel comfortable with! 
 
 Below is a suggested process, but do not feel like you need to follow these steps:
 
@@ -69,9 +64,11 @@ Below is a suggested process, but do not feel like you need to follow these step
 5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
 6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
 
-## Deployment Tips
+## Deployment
 
-As mentioned above, there are many ways to host your project for free. Our recommend hosts are:
+As mentioned above, there are many ways to host your project for free. 
+
+Our recommended hosts are:
 
 - [GitHub Pages](https://pages.github.com/)
 - [Vercel](https://vercel.com/) (recommended, if you are following this particular solution)
@@ -79,19 +76,15 @@ As mentioned above, there are many ways to host your project for free. Our recom
 
 You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
 
-## Create a custom `README.md`
+## Wiki
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+I have created a step-by-step processes done to develop this fem-challenge in the Wiki page [TBA](). I strongly suggest you start working on your solution first and then comeback to this section when you are ready to compare and review your solution. 
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+DISCLAIMER: There are no such thing as "one solution fits all"! Hence, while comparing solution, if you figure out ways how I can further improve the project solution, please drop in to discussion. Let's all learn from each other!
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+## Submitting your solution to Frontend Mentor (FEM)
 
-## Submitting your solution
-
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
-
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this. Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
 
 ## Sharing your solution
 
