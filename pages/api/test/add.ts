@@ -3,12 +3,13 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { dbConnect } from "../../../utils/connection";
 import Test from "../../../models/TestModel";
 
+// Declare NextAPIResponse type.
 type Test = {
   uuid: number,
   text: string,
 }
 
-export default async function addTest(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Test>
 ) {
