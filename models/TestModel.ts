@@ -21,4 +21,4 @@ const TestSchema = new mongoose.Schema({
  */
 const Test = mongoose.models.Test || mongoose.model("Test", TestSchema);
 
-export default TestSchema;
+export default Test;
