@@ -1,12 +1,11 @@
-import mongoose from "mongoose";
+import mongoose, { connect } from "mongoose";
 
 // Get database URL from .env file.
 const { DB_SERVER_URL } = process.env;
 
 // Connect to database server.
-export const connect = async () => {
-  const conn = await mongoose
-    .connect( DB_SERVER_URL as string )
+export const dbConnect = async () => {
+  const conn = await connect( DB_SERVER_URL! )
     .catch( e => console.log(e) );
   
   console.log("Connection established.");
