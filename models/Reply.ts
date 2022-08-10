@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import { IReply } from "../interfaces";
 
-const ReplySchema = new mongoose.Schema({
+const ReplySchema = new mongoose.Schema<IReply>({
     content: {
         type: String,
         required: true,
@@ -28,6 +29,6 @@ const ReplySchema = new mongoose.Schema({
 });
 
 // Declare Reply model.
-const Reply = mongoose.models.Reply || mongoose.model('Reply', ReplySchema);
+const Reply = mongoose.models.Reply || mongoose.model<IReply>('Reply', ReplySchema);
 
 export default Reply;
