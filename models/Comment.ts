@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { IComment } from "../interfaces";
 
 /**
  * Declare Schema of Comment model.
@@ -10,11 +11,11 @@ import mongoose from "mongoose";
  * May not be an ideal solution for NoSQL database, but just wanted to show that it is possible
  * to have relationship / structure in NoSQL as well.
  */
-const CommentSchema = new mongoose.Schema({
+const CommentSchema = new mongoose.Schema<IComment>({
     content: {
         type: String,
         required: true,
-    }, 
+    },
     score: {
         type: Number,
         required: true,
@@ -23,7 +24,7 @@ const CommentSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true,
-    }, 
+    },
     replies: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Reply'
@@ -33,6 +34,6 @@ const CommentSchema = new mongoose.Schema({
 });
 
 // Declare Comment model.
-const Comment = mongoose.models.Comment || mongoose.model('Comment', CommentSchema);
+const Comment = mongoose.models.Comment || mongoose.model<IComment>('Comment', CommentSchema);
 
 export default Comment;
