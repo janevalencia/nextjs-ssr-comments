@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+:root {
+    --max-width: 375px;
+
+    /* Primary Colors */
+    --primary-blue: hsl(238, 40%, 52%);
+    --primary-soft-red: hsl(358, 79%, 66%);
+    --primary-light-gray: hsl(239, 57%, 85%);
+    --primary-pale-red: hsl(357, 100%, 86%);
+
+    /* Secondary Colors */
+    --secondary-dark-blue: hsl(212, 24%, 26%);
+    --secondary-greyish-blue: hsl(211, 10%, 45%);
+    --secondary-light-gray: hsl(223, 19%, 93%);
+    --secondary-lighter-gray: hsl(228, 33%, 97%);
+    --secondary-white: hsl(0, 0%, 100%);
+    
+    /* Font */
+    --site-font: 'Rubik', sans-serif;
+    --font-size: 16px;
+    --lg-font-size: 1.5rem;
+    --md2-font-size: 1.2rem;
+    --md3-font-size: 1.1rem;
+    --normal-font-size: 1rem;
+    --sm-font-size: 0.9rem;
+    --smaller-font-size: 0.75rem;
+    --fw-light: 400;
+    --fw-normal: 500;
+    --fw-bold: 700;
+    --line-height: 2;
+
+    /* Effect: Transition */
+    --trans-length: 0.3s;
+
+    /* Effect: Translate */
+    --translate-effect: translate(-50%, -50%);
+
+    /* Responsive Width */
+    @media screen and (min-width: 768px) {
+        --max-width: 1440px;
+        --lg-font-size: 2rem;
+    }
+}
