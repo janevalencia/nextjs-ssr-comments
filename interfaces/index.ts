@@ -1,3 +1,9 @@
+/**
+ * Interfaces used when defining backend schema & models
+ * - models/Comment
+ * - models/Reply
+ * - models/User
+ */
 import { Types } from "mongoose"
 
 export interface IUser {
