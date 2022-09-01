@@ -1,11 +1,14 @@
-// Interface used to define backend schema and model.
+// Interface used to define schema and model.
 import { Date, Types } from "mongoose"
 
 export interface IUser {
+    _id?: number
     username: string
     firstname: string
     lastname: string
     imageURL: string
+    createdAt: Date
+    updatedAt: Date
 }
 
 export interface IComment {
@@ -32,18 +35,4 @@ export interface ResponseFunctions {
   PUT?: Function
   DELETE?: Function
 }
-// ============= END ===============
-
-
-// Interface to define models on the frontend component.
-export interface User {
-  _id?: number
-  username: string
-  firstname: string
-  lastname: string
-  imageURL: string
-  createdAt: Date
-  updatedAt: Date
-}
-
 // ============= END ===============
