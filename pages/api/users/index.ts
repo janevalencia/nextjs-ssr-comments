@@ -1,5 +1,7 @@
 /**
- * API GET: All Users
+ * API route: /users/
+ * - GET
+ * - POST
  */
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { dbConnect } from "../../../utils/connection";
@@ -15,33 +17,33 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   // Handle response.
   const handleResponse: ResponseFunctions = {
-    // GET /users/: Fetch all users.
-    GET: async (req: NextApiRequest, res: NextApiResponse) => {
-        // Connect to database.
-        await dbConnect();
+        // GET /users/: Fetch all users.
+        GET: async (req: NextApiRequest, res: NextApiResponse) => {
+            // Connect to database.
+            await dbConnect();
 
-        // Fetch all users data from database.
-        const users = await User.find({}).catch(exception);
-        
-        // Return all users upon status 200.
-        res.status(200).json(users);
-    },
+            // Fetch all users data from database.
+            const users = await User.find({}).catch(exception);
+            
+            // Return all users upon status 200.
+            res.status(200).json(users);
+        },
 
-    // POST /users/: Create new user.
-    POST: async (req: NextApiRequest, res: NextApiResponse) => {
-        // Connect to database.
-        await dbConnect();
+        // POST /users/: Create new user.
+        POST: async (req: NextApiRequest, res: NextApiResponse) => {
+            // Connect to database.
+            await dbConnect();
 
-        // Create a User object based on the request body.
-        const user = await User.create(req.body).catch(exception)
+            // Create a User object based on the request body.
+            const user = await User.create(req.body).catch(exception)
 
-        // Return newly created new user object upon status 200.
-        res.status(200).json({
-            "message" : "Successfully created a new user.",
-            "result" : user
-        });
-      },
-  }
+            // Return newly created new user object upon status 200.
+            res.status(200).json({
+                "message" : "Successfully created a new user.",
+                "result" : user
+            });
+        },
+    }
 
   // Return response if request method is exist/valid, otherwise return 400.
   const response = handleResponse[method]
