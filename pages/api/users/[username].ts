@@ -38,6 +38,7 @@
         await dbConnect();
 
         // Update the user information based on the request body.
+        // More info about findOneAndUpdate: https://mongoosejs.com/docs/tutorials/findoneandupdate.html
         const update = await User.findOneAndUpdate({ username: userName }, req.body, { new: true }).catch(exception);
 
         // Return response upon successfully updating a user.
