@@ -1,11 +1,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import Vote from "./Vote";
-import { UserProps, CommentProps } from "../types";
+import { CommentProps } from "../types";
 import { CommentForm, Modal, EditForm } from "./";
+import { IUser } from "../interfaces";
 
 type CommentCardProps = {
-    currentUser : UserProps,
+    currentUser : IUser,
     comment : CommentProps,
     replyingTo?: string,
 };
@@ -111,7 +112,7 @@ const CommentCard = ( { currentUser, comment, replyingTo } : CommentCardProps ) 
 
             {/* Reply Form */}
             { showReplyForm && (
-                <CommentForm currentUser={currentUser} replyingTo={comment.user.username} />
+                <CommentForm currentUser={ currentUser } replyingTo={ comment.user.username } />
             ) }
 
             {/* Comment-Replies */}
@@ -122,7 +123,7 @@ const CommentCard = ( { currentUser, comment, replyingTo } : CommentCardProps ) 
                     {
                         comment.replies.map( (reply) => (
                             <article key={reply.id}>
-                                <CommentCard currentUser={currentUser} comment={reply} replyingTo={reply.replyingTo} />
+                                <CommentCard currentUser={ currentUser } comment={ reply } replyingTo={ reply.replyingTo } />
                             </article>
                         ) ) 
                     }

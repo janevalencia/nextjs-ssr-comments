@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { UserProps } from "../types";
+import { IUser } from "../interfaces";
 
 type CommentFormProps = {
-    currentUser : UserProps,
+    currentUser : IUser,
     replyingTo?: string,
 };
 
@@ -29,7 +29,7 @@ const CommentForm = ( { currentUser, replyingTo } : CommentFormProps ) => {
             <form className="grid grid-cols-2 gap-3 md:flex md:items-start">
                 <div className="comment-card__user profile-img relative overflow-hidden row-start-2 flex items-center">
                     <Image 
-                        src={ currentUser.image.png } 
+                        src={ currentUser.imageURL } 
                         alt={ currentUser.username }
                         width={40} 
                         height={40} 
