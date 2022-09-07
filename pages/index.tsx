@@ -1,14 +1,9 @@
-import type { NextPage } from "next";
+import type { GetServerSideProps, InferGetServerSidePropsType, NextPage } from "next";
 import Head from "next/head";
+import { IUser } from "../interfaces";
 import { CommentCard, CommentForm } from "../components";
 
 // To be deleted later once DB is setup.
-const CurrentUser = {
-  "image": { 
-    "png": "/assets/images/image-juliusomo.png"
-  },
-  "username": "juliusomo",
-}
 const SampleData = [
   {
     "id": "1",
@@ -65,7 +60,8 @@ const SampleData = [
   }
 ]
 
-const Home: NextPage = () => {
+// Define Index page component.
+const Home: NextPage = ( { currentUser } :  InferGetServerSidePropsType<typeof getServerSideProps> ) => {
   return (
     <>
       <Head>
@@ -76,16 +72,31 @@ const Home: NextPage = () => {
         <section className="flex flex-col mb-6 w-full">
           {SampleData.map( (data) => (
             <article key={data.id}>
-              <CommentCard currentUser={CurrentUser} comment={data} />
+              <CommentCard currentUser={currentUser} comment={data} />
             </article>
           ) )}
         </section>
         <section className="comments-new">
-          <CommentForm currentUser={ CurrentUser } />
+          <CommentForm currentUser={ currentUser } />
         </section>
       </main>
     </>
   )
+}
+
+// Get props from Server Side Rendering (run-time).
+export const getServerSideProps: GetServerSideProps = async () => {
+  // Fetch currentUser data from db (persisted currentUser).
+  const { LOCAL_API_USERS_URL } = process.env;
+  const res = await fetch( `${LOCAL_API_USERS_URL!}/juliusomo` );
+  const currentUser : IUser = await res.json();
+
+  // Return props.
+  return {
+    props : {
+      currentUser
+    }
+  }
 }
 
 export default Home;

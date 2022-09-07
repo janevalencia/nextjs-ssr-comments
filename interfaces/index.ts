@@ -2,7 +2,7 @@
 import { Date, Types } from "mongoose"
 
 export interface IUser {
-    _id?: number
+    _id?: Types.ObjectId
     username: string
     firstname: string
     lastname: string
