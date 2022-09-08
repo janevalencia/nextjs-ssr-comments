@@ -7,15 +7,6 @@ import { useEffect } from 'react';
 const NotFound : NextPage = () => {
 
     const router = useRouter();
-    
-    // Redirecting user to homepage in few seconds.
-    useEffect( () => {
-        setTimeout( () => {
-            router.push('/');
-        }, 5000 );
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [] );
 
     return (
         <>
@@ -26,7 +17,7 @@ const NotFound : NextPage = () => {
             <div className='section notfound w-full p-4 md:p-8 h-[65vh]'>
                 <h1 className='notfound__title'>🦄 Ooops ... 404!</h1>
                 <h2 className='notfound__subtitle py-5'>Something went wrong!</h2>
-                <p className='notfound__description'>Redirecting you to homepage shortly or click here <Link href='/'><a className='text-blue-600'>homepage</a></Link>.</p>
+                <p className='notfound__description'>Click here to return to <Link href='/'><a className='text-blue-600'>homepage</a></Link>.</p>
             </div>
         </>
     );
