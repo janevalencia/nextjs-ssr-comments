@@ -91,6 +91,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const res = await fetch( `${LOCAL_API_USERS_URL!}/juliusomo` );
   const currentUser : IUser = await res.json();
 
+  // Throw 404 page when API request failed.
+  if (!currentUser) {
+    console.log('Failed to fetch data from API routes!')
+    return {
+      notFound: true,
+    }
+  }
+
   // Return props.
   return {
     props : {
