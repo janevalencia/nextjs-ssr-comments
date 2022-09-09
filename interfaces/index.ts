@@ -12,6 +12,7 @@ export interface IUser {
 }
 
 export interface IComment {
+    _id?: Types.ObjectId
     content: string
     score: number
     user: Types.ObjectId
@@ -19,6 +20,7 @@ export interface IComment {
 }
 
 export interface IReply {
+    _id?: Types.ObjectId
     content: string
     score: number
     replyingTo: string

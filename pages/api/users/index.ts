@@ -1,5 +1,5 @@
 /**
- * API route: /users/
+ * API route: api/users/
  * - GET
  * - POST
  */

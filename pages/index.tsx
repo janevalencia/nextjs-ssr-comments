@@ -1,7 +1,7 @@
 import type { GetServerSideProps, InferGetServerSidePropsType, NextPage } from "next";
 import Head from "next/head";
 import { IUser } from "../interfaces";
-import { CommentCard, CommentForm } from "../components";
+import { CommentCard, AddForm } from "../components";
 
 // To be deleted later once DB is setup.
 const SampleData = [
@@ -77,7 +77,7 @@ const Home: NextPage = ( { currentUser } :  InferGetServerSidePropsType<typeof g
           ) )}
         </section>
         <section className="comments-new">
-          <CommentForm currentUser={ currentUser } />
+          <AddForm currentUser={ currentUser } />
         </section>
       </main>
     </>
