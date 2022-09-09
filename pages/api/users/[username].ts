@@ -53,8 +53,8 @@
         // Connect to database.
         await dbConnect();
 
-        // Fetch a User by username
-        const del = await User.findOneAndUpdate({ username: userName }).catch(exception);
+        // Delete a user by username.
+        const del = await User.findOneAndDelete({ username: userName }).catch(exception);
 
         // Return response upon successfully deleting a user.
         res.status(200).json({
