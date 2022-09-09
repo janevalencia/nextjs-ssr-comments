@@ -2,7 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Vote from "./Vote";
 import { CommentProps } from "../types";
-import { CommentForm, Modal, EditForm } from "./";
+import { AddForm, Modal, EditForm } from "./";
 import { IUser } from "../interfaces";
 
 type CommentCardProps = {
@@ -112,7 +112,7 @@ const CommentCard = ( { currentUser, comment, replyingTo } : CommentCardProps ) 
 
             {/* Reply Form */}
             { showReplyForm && (
-                <CommentForm currentUser={ currentUser } replyingTo={ comment.user.username } />
+                <AddForm currentUser={ currentUser } replyingTo={ comment.user.username } />
             ) }
 
             {/* Comment-Replies */}
