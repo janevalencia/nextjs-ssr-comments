@@ -85,7 +85,13 @@ const Home: NextPage = ( { currentUser } :  InferGetServerSidePropsType<typeof g
 }
 
 // Get props from Server Side Rendering (run-time).
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  // Caching config.
+  context.res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=10, stale-while-revalidate=59'
+  )
+
   // Get current environment variable.
   const dev = process.env.NODE_ENV !== 'production';
   const { DEV_URL, PROD_URL, API_USERS_URL } = process.env;
