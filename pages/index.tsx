@@ -86,9 +86,12 @@ const Home: NextPage = ( { currentUser } :  InferGetServerSidePropsType<typeof g
 
 // Get props from Server Side Rendering (run-time).
 export const getServerSideProps: GetServerSideProps = async () => {
+  // Get current environment variable.
+  const dev = process.env.NODE_ENV !== 'production';
+  const { DEV_URL, PROD_URL, API_USERS_URL } = process.env;
+
   // Fetch currentUser data from db (persisted currentUser).
-  const { LOCAL_API_USERS_URL } = process.env;
-  const res = await fetch( `${LOCAL_API_USERS_URL!}/juliusomo` );
+  const res = await fetch( `${dev ? DEV_URL : PROD_URL}/${API_USERS_URL}/juliusomo` );
   const currentUser : IUser = await res.json();
 
   // Throw 404 page when API request failed.
