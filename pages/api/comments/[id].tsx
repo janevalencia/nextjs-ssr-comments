@@ -25,7 +25,7 @@
         // Connect to database.
         await dbConnect();
 
-        // Fetch a Comment by username
+        // Fetch a Comment by id.
         const comment = await Comment.findById(id).populate(['user', 'replies']).catch(exception);
 
         // Return the queried user upon status 200.
@@ -40,7 +40,7 @@
         // Update the comment information based on the request body.
         const update = await Comment.findByIdAndUpdate(id, req.body, { new: true }).catch(exception);
 
-        // Return response upon successfully updating a user.
+        // Return response upon successfully updating a comment.
         res.status(200).json({
           "message" : `Successfully updated ${id}`,
           "result" : update
@@ -55,7 +55,7 @@
         // Delete a comment by ID.
         const del = await Comment.findByIdAndDelete(id).catch(exception);
 
-        // Return response upon successfully deleting a user.
+        // Return response upon successfully deleting a comment.
         res.status(200).json({
           "message" : `Successfully deleted ${id}`
         });
