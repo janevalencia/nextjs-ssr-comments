@@ -23,7 +23,7 @@
              await dbConnect();
  
              // Fetch all comments objects.
-             const comments = await Comment.find({}).populate('user').catch(exception);
+             const comments = await Comment.find({}).populate(['user', 'replies']).catch(exception);
              
              // Return all comments upon status 200.
              res.status(200).json(comments);

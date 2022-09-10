@@ -26,7 +26,7 @@
         await dbConnect();
 
         // Fetch a Comment by username
-        const comment = await Comment.findById(id).populate('user').catch(exception);
+        const comment = await Comment.findById(id).populate(['user', 'replies']).catch(exception);
 
         // Return the queried user upon status 200.
         res.status(200).json(comment);
