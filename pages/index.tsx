@@ -94,7 +94,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   // Get current environment variable.
   const dev = process.env.NODE_ENV !== 'production';
-  const { DEV_URL, PROD_URL, API_USERS_URL } = process.env;
+  const { DEV_URL, PROD_URL, API_USERS_URL, API_COMMENTS_URL } = process.env;
 
   // Fetch currentUser data from db (persisted currentUser).
   const res = await fetch( `${dev ? DEV_URL : PROD_URL}/${API_USERS_URL}/juliusomo` );
