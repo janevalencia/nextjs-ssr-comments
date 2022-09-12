@@ -7,7 +7,6 @@
  import { dbConnect } from "../../../utils/connection";
  import { ResponseFunctions } from '../../../interfaces';
  import Reply from '../../../models/Reply';
- import Comment from '../../../models/Comment';
  
  const handler = async (req: NextApiRequest, res: NextApiResponse) => {
    // Identify the request method.
@@ -37,19 +36,11 @@
  
              // Create a Reply object based on body request.
              const reply = await Reply.create(req.body).catch(exception);
-
-             // Update the parent_comment's replies array.
-             const comment = await Comment.findOneAndUpdate(
-                { _id: req.body.parent },
-                { $push: { replies: reply }},
-                { new: true }
-             ).catch(exception);
  
              // Return newly created reply object upon status 200.
              res.status(200).json({
                  "message" : "Successfully created a new reply.",
-                 "newReply" : reply,
-                 "updatedComment" : comment
+                 "result" : reply
              });
          },
      }
