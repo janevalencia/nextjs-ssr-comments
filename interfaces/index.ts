@@ -16,7 +16,6 @@ export interface IComment {
     content: string
     score: number
     user: Types.ObjectId
-    replies: [Types.ObjectId]
 }
 
 export interface IReply {
