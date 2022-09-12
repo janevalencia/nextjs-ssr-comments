@@ -24,11 +24,7 @@ const CommentSchema = new mongoose.Schema<IComment>({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true,
-    },
-    replies: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Reply'
-    }]
+    }
 }, {
     timestamps: true,
 });
