@@ -26,7 +26,15 @@
         await dbConnect();
 
         // Fetch a Comment by id.
-        const comment = await Comment.findById(id).populate(['user', 'replies']).catch(exception);
+        const comment = await Comment.findById(id).populate([
+          'user', 
+          { 
+          path: 'replies',
+          populate: {
+            path: 'user',
+            model: 'User'
+          }}
+        ]).catch(exception);
 
         // Return the queried user upon status 200.
         res.status(200).json(comment);
