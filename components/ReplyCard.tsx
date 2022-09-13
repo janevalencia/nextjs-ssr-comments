@@ -1,19 +1,15 @@
 import { useState } from "react";
 import Image from "next/image";
 import Vote from "./Vote";
-import { ReplyForm, Modal, EditForm, ReplyCard } from "./";
-import { IUser, IComment } from "../interfaces";
-import { useReply } from "../utils/useReply";
+import { ReplyForm, Modal, EditForm } from "./";
+import { IUser, IReply, IComment } from "../interfaces";
 
-type CommentCardProps = {
+type ReplyCardProps = {
     currentUser : IUser,
-    comment : IComment
+    reply : IReply
 };
 
-const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
-
-    // Manage this comment's list of replies (if exist).
-    const { replies, isLoading, isError } = useReply(comment._id);
+const ReplyCard = ( { currentUser, reply } : ReplyCardProps ) => {
 
     // Manage state of Reply Form toggle (display / hide).
     const [ showReplyForm, setShowReplyForm ] = useState<boolean>(false);
@@ -45,7 +41,7 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
 
                     {/* Comment-Voting */}
                     <div className="row-start-2 md:row-span-3 col-end-1">
-                        <Vote votes={ comment.score } />
+                        <Vote votes={ reply.score } />
                     </div>
 
                     {/* Comment-User */}
@@ -53,23 +49,27 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
                         <div className="flex flex-row justify-start items-center gap-2 pt-1">
                             <div className="comment-card__user profile-img relative overflow-hidden flex items-center">
                                 <Image 
-                                    src={ comment.user.imageURL } 
-                                    alt={ comment.user.username }
+                                    src={ reply.user.imageURL } 
+                                    alt={ reply.user.username }
                                     width={35} 
                                     height={35} 
                                     className="absolute rounded-full object-cover w-full"
                                 />
                             </div>
-                            <p className="comment-card__user username">{ comment.user.username }</p>
-                            { comment.user.username === currentUser.username && (<span className="username username__active px-2">you</span>) }
-                            <span className="comment-card__user date">{ comment.updatedAt }</span>
+                            <p className="comment-card__user username">{ reply.user.username }</p>
+                            { reply.user.username === currentUser.username && 
+                                (
+                                    <span className="username username__active px-2">you</span>
+                                ) 
+                            }
+                            <span className="comment-card__user date">{ reply.updatedAt }</span>
                         </div>
                     </div>
 
                     {/* Comment-CTA-buttons */}
                     <div className="comment-card__actions row-start-2 md:row-start-1 col-end-4 justify-self-end self-center">
                         <div className="flex gap-6">
-                        { comment.user.username !== currentUser.username ? 
+                        { reply.user.username !== currentUser.username ? 
                         (
                             <button
                                 className="button button__reply flex flex-row items-center gap-x-2"
@@ -104,10 +104,10 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
                     <div className="comment-card__content md:row-span-2 col-span-4 md:col-span-3">
                     { showEditForm ? 
                         (
-                            <EditForm comment={comment} />
+                            <EditForm reply={reply} />
                         ) : 
                         (
-                            <p>{ comment.content }</p>
+                            <p><span className="comment-card__replying-to">@{reply.replyingTo}</span> { reply.content }</p>
                         )
                     }
                     </div>
@@ -115,29 +115,9 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
             </div>
 
             {/* Reply Form */}
-            { showReplyForm && 
-                ( 
-                    <ReplyForm currentUser={currentUser} parentComment={comment._id} replyingTo={comment.user.username} /> 
-                ) 
-            }
-
-            {/* Comment-Replies */}
-            <div className="section comment-reply flex flex-row">
-                { replies && (<div className="comment-reply__line mr-4 md:mx-8 mt-2"></div>) }
-                { replies && replies.length > 0 && 
-                    (
-                        <div className="flex flex-col grow pt-2">
-                            {
-                                replies.map( (reply, index) => (
-                                    <article key={index}>
-                                        <ReplyCard currentUser={currentUser} reply={reply} />
-                                    </article>
-                                ) ) 
-                            }
-                        </div>
-                    )
-                }
-            </div>
+            { showReplyForm && (
+                <ReplyForm currentUser={currentUser} parentComment={reply.parent} replyingTo={reply.user.username}/>
+            ) }
 
             { openModal && ( 
                     <Modal 
@@ -151,4 +131,4 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
     );
 }
 
-export default CommentCard;
+export default ReplyCard;

@@ -1,8 +1,8 @@
 // Interface used to define schema and model.
-import { Date, Types } from "mongoose"
+import { Date } from "mongoose"
 
 export interface IUser {
-    _id?: Types.ObjectId
+    _id: string
     username: string
     firstname: string
     lastname: string
@@ -12,19 +12,23 @@ export interface IUser {
 }
 
 export interface IComment {
-    _id?: Types.ObjectId
+    _id: string
     content: string
     score: number
-    user: Types.ObjectId
+    user: IUser
+    createdAt: Date
+    updatedAt: Date
 }
 
 export interface IReply {
-    _id?: Types.ObjectId
+    _id: string
     content: string
     score: number
     replyingTo: string
-    user: Types.ObjectId
-    parent: Types.ObjectId
+    user: IUser
+    parent: string
+    createdAt: Date
+    updatedAt: Date
 }
 // ============= END ===============
 
