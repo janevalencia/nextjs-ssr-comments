@@ -3,21 +3,11 @@ import Image from "next/image";
 import { IUser } from "../interfaces";
 
 type CommentFormProps = {
-    currentUser : IUser,
-    replyingTo?: string,
+    currentUser : IUser
 };
 
-const CommentForm = ( { currentUser, replyingTo } : CommentFormProps ) => {
+const CommentForm = ( { currentUser } : CommentFormProps ) => {
     const [ commentContent, setCommentContent ] = useState<string>("");
-    const [ isNew, setIsNew ] = useState<boolean>(true);
-
-    // Set isNew to false and default-value of commentContent, if there is a replyingTo username.
-    useEffect(() => {
-        if ( replyingTo ) {
-            setIsNew(false);
-            setCommentContent(`@` + replyingTo + ` `);
-        }
-    }, [replyingTo]);
 
     // Handle input change on comment text-area.
     const handleChange = ( e : React.ChangeEvent<HTMLTextAreaElement> ): void => {
@@ -39,12 +29,12 @@ const CommentForm = ( { currentUser, replyingTo } : CommentFormProps ) => {
                 <textarea 
                     value={commentContent}
                     onChange={handleChange} 
-                    placeholder={ isNew ? "Add a comment..." : "" }
+                    placeholder="Add a comment..."
                     className="comment-form__inputbox border rounded-md p-3 row-start-1 col-span-2 md:flex-grow"
                 />
                 <input 
                     type="submit" 
-                    value={ isNew ? `SEND` : `REPLY`} 
+                    value="SEND"
                     className="button button__cta rounded-lg w-28 h-12 row-start-2 justify-self-end"
                 />
             </form>
