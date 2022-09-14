@@ -40,16 +40,22 @@ export const getServerSideProps: GetServerSideProps<{
 
   // Get current environment variable.
   const dev = process.env.NODE_ENV !== 'production';
-  const { DEV_URL, PROD_URL, API_USERS_URL, API_COMMENTS_URL, API_REPLIES_URL } = process.env;
+  const { 
+    DEV_URL, 
+    PROD_URL, 
+    NEXT_PUBLIC_API_USERS_URL, 
+    NEXT_PUBLIC_API_COMMENTS_URL, 
+    NEXT_PUBLIC_API_REPLIES_URL 
+  } = process.env;
 
   // Fetch currentUser data from db (persisted currentUser = juliusomo, feel free to change).
-  const currentUser : IUser = await (await fetch(`${dev ? DEV_URL : PROD_URL}/${API_USERS_URL}/juliusomo`)).json();
+  const currentUser : IUser = await (await fetch(`${dev ? DEV_URL : PROD_URL}/${NEXT_PUBLIC_API_USERS_URL}/juliusomo`)).json();
 
   // Fetch comment data from db.
-  const comments : IComment[] = await (await fetch(`${dev ? DEV_URL : PROD_URL}/${API_COMMENTS_URL}`)).json();
+  const comments : IComment[] = await (await fetch(`${dev ? DEV_URL : PROD_URL}/${NEXT_PUBLIC_API_COMMENTS_URL}`)).json();
 
   // Fetch reply data from db.
-  const replies : IReply[] = await (await fetch(`${dev ? DEV_URL : PROD_URL}/${API_REPLIES_URL}`)).json();
+  const replies : IReply[] = await (await fetch(`${dev ? DEV_URL : PROD_URL}/${NEXT_PUBLIC_API_REPLIES_URL}`)).json();
 
   // Throw 404 page when API request failed.
   if (!currentUser || !comments || !replies) {
