@@ -1,22 +1,33 @@
-import React, { useState, useEffect } from "react";
-import { CommentProps } from "../types";
+import React, { useEffect, useState } from "react";
+import { IComment, IReply } from "../interfaces";
 
 type EditFormProps = {
-    comment: CommentProps,
+    comment?: IComment,
+    reply?: IReply
 };
 
-const EditForm = ( { comment } : EditFormProps ) => {
-    const [ commentContent, setCommentContent ] = useState<string>(comment.content);
+const EditForm = ( { comment, reply } : EditFormProps ) => {
+    const [ content, setContent ] = useState<string>("");
+
+    useEffect( () => {
+        if (comment) {
+            setContent(comment.content);
+        }
+
+        if (reply) {
+            setContent(reply.content);
+        }
+    }, [comment, reply])
 
     // Handle input change on edit form text-area.
     const handleChange = ( e : React.ChangeEvent<HTMLTextAreaElement> ): void => {
-        setCommentContent( e.target.value );
+        setContent( e.target.value );
     }
 
     return (
         <form className="flex flex-col">
             <textarea 
-                value={commentContent}
+                value={ reply ? `@${reply.replyingTo} ${content}` : content }
                 onChange={handleChange} 
                 className="edit-form__inputbox border rounded-md p-3"
             />

@@ -1,7 +1,12 @@
-import mongoose, { connect } from "mongoose";
+import { connect } from "mongoose";
 
 // Get database URL from .env file.
 const { DB_SERVER_URL } = process.env;
+
+// Verify MongoDB URI exists.
+if (!DB_SERVER_URL) {
+  throw new Error('Define the DB_SERVER_URL environmental variable');
+}
 
 // Connect to database server.
 export const dbConnect = async () => {

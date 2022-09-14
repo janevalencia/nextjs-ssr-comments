@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { IUser } from "../interfaces";
+import { IComment, IUser } from "../interfaces";
 
-type CommentFormProps = {
-    currentUser : IUser
+type ReplyFormProps = {
+    currentUser : IUser,
+    parentComment: string,
+    replyingTo: string,
 };
 
-const CommentForm = ( { currentUser } : CommentFormProps ) => {
-    const [ commentContent, setCommentContent ] = useState<string>("");
+const ReplyForm = ( { currentUser, parentComment, replyingTo } : ReplyFormProps ) => {
+    const [ commentContent, setCommentContent ] = useState<string>(`@${replyingTo} `);
 
     // Handle input change on comment text-area.
     const handleChange = ( e : React.ChangeEvent<HTMLTextAreaElement> ): void => {
@@ -29,12 +31,11 @@ const CommentForm = ( { currentUser } : CommentFormProps ) => {
                 <textarea 
                     value={commentContent}
                     onChange={handleChange} 
-                    placeholder="Add a comment..."
                     className="comment-form__inputbox border rounded-md p-3 row-start-1 col-span-2 md:flex-grow"
                 />
                 <input 
                     type="submit" 
-                    value="SEND"
+                    value="REPLY" 
                     className="button button__cta rounded-lg w-28 h-12 row-start-2 justify-self-end"
                 />
             </form>
@@ -42,4 +43,4 @@ const CommentForm = ( { currentUser } : CommentFormProps ) => {
     );
 }
 
-export default CommentForm;
+export default ReplyForm;

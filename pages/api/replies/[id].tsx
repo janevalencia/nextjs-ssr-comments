@@ -1,5 +1,5 @@
 /**
- * API route: api/comments/[id]
+ * API route: api/replies/[id]
  * - GET
  * - PUT
  * - DELETE
@@ -7,7 +7,7 @@
  import type { NextApiRequest, NextApiResponse } from 'next'
  import { dbConnect } from "../../../utils/connection";
  import { ResponseFunctions } from '../../../interfaces';
- import Comment from '../../../models/Comment';
+import Reply from '../../../models/Reply';
 
  const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     // Identify the request method.
@@ -20,44 +20,44 @@
     const exception = (error: Error) => res.status(400).json({ error });
   
     const handleCase: ResponseFunctions = {
-      // GET /comments/[id]: Fetch a single comment by ID.
+      // GET /replies/[id]: Fetch a single reply by ID.
       GET: async (req: NextApiRequest, res: NextApiResponse) => {
         // Connect to database.
         await dbConnect();
 
-        // Fetch a Comment by id.
-        const comment = await Comment.findById(id).populate('user').catch(exception);
+        // Fetch a Reply by ID.
+        const comment = await Reply.findById(id).populate('user').catch(exception);
 
         // Return the queried user upon status 200.
         res.status(200).json(comment);
       },
       
-      // PUT /comments/[id]: Update property(s) of a single comment.
+      // PUT /replies/[id]: Update property(s) of a single reply.
       PUT: async (req: NextApiRequest, res: NextApiResponse) => {
         // Connect to database.
         await dbConnect();
 
-        // Update the comment information based on the request body.
-        const update = await Comment.findByIdAndUpdate(id, req.body, { new: true }).catch(exception);
+        // Update the reply information based on the request body.
+        const update = await Reply.findByIdAndUpdate(id, req.body, { new: true }).catch(exception);
 
-        // Return response upon successfully updating a comment.
+        // Return response upon successfully updating a reply.
         res.status(200).json({
-          "message" : `Successfully updated ${id}`,
+          "message" : `Successfully updated a Reply doc: ${id}`,
           "result" : update
         });
       },
       
-      // DELETE /comments/[id]: Delete a single comment.
+      // DELETE /replies/[id]: Delete a single reply.
       DELETE: async (req: NextApiRequest, res: NextApiResponse) => {
         // Connect to database.
         await dbConnect();
 
-        // Delete a comment by ID.
-        const del = await Comment.findByIdAndDelete(id).catch(exception);
+        // Delete a reply by ID.
+        const del = await Reply.findByIdAndDelete(id).catch(exception);
 
-        // Return response upon successfully deleting a comment.
+        // Return response upon successfully deleting a reply.
         res.status(200).json({
-          "message" : `Successfully deleted ${id}`
+          "message" : `Successfully deleted a Reply doc: ${id}`
         });
       },
     }
