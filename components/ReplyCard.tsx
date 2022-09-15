@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
+import moment from "moment";
 import { ReplyForm, Modal, EditForm, Vote } from "./";
 import { IUser, IReply } from "../interfaces";
 
@@ -61,7 +62,9 @@ const ReplyCard = ( { currentUser, reply } : ReplyCardProps ) => {
                                     <span className="username username__active px-2">you</span>
                                 ) 
                             }
-                            <span className="comment-card__user date">{ reply.updatedAt }</span>
+                            <span className="comment-card__user date">
+                                { moment(reply.updatedAt.toString()).format('MMM Do YYYY, H:mm') }
+                            </span>
                         </div>
                     </div>
 

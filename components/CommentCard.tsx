@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
+import moment from "moment";
 import { ReplyForm, Modal, EditForm, ReplyCard, Vote } from "./";
 import { IUser, IComment } from "../interfaces";
 import { useReply } from "../utils/useReply";
@@ -61,7 +62,9 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
                             </div>
                             <p className="comment-card__user username">{ comment.user.username }</p>
                             { comment.user.username === currentUser.username && (<span className="username username__active px-2">you</span>) }
-                            <span className="comment-card__user date">{ comment.updatedAt }</span>
+                            <span className="comment-card__user date">
+                                { moment(comment.updatedAt.toString()).format('MMM Do YYYY, H:mm') }
+                            </span>
                         </div>
                     </div>
 
