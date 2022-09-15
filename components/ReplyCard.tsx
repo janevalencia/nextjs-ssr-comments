@@ -63,7 +63,7 @@ const ReplyCard = ( { currentUser, reply } : ReplyCardProps ) => {
                                 ) 
                             }
                             <span className="comment-card__user date">
-                                { moment(reply.updatedAt.toString()).format('MMM Do YYYY, H:mm') }
+                                { moment(reply.createdAt.toString()).format('MMM Do YYYY, H:mm') }
                             </span>
                         </div>
                     </div>
