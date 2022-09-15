@@ -63,7 +63,7 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
                             <p className="comment-card__user username">{ comment.user.username }</p>
                             { comment.user.username === currentUser.username && (<span className="username username__active px-2">you</span>) }
                             <span className="comment-card__user date">
-                                { moment(comment.updatedAt.toString()).format('MMM Do YYYY, H:mm') }
+                                { moment(comment.createdAt.toString()).format('MMM Do YYYY, H:mm') }
                             </span>
                         </div>
                     </div>
