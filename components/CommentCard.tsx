@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
-import Vote from "./Vote";
-import { ReplyForm, Modal, EditForm, ReplyCard } from "./";
+import { ReplyForm, Modal, EditForm, ReplyCard, Vote } from "./";
 import { IUser, IComment } from "../interfaces";
 import { useReply } from "../utils/useReply";
 

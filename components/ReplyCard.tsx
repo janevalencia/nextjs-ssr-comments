@@ -1,8 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
-import Vote from "./Vote";
-import { ReplyForm, Modal, EditForm } from "./";
-import { IUser, IReply, IComment } from "../interfaces";
+import { ReplyForm, Modal, EditForm, Vote } from "./";
+import { IUser, IReply } from "../interfaces";
 
 type ReplyCardProps = {
     currentUser : IUser,
