@@ -1,4 +1,5 @@
 import useSWR, {Fetcher} from "swr";
+import moment from "moment";
 import { IReply } from "../interfaces";
 
 const { NEXT_PUBLIC_API_REPLIES_PARENT_URL } = process.env;
@@ -10,10 +11,18 @@ if ( !NEXT_PUBLIC_API_REPLIES_PARENT_URL ) {
 const fetcher: Fetcher<IReply[], string> = (url) => fetch(url).then(res => res.json());
 
 export const useReply = (id : string) => {
+    // Fetch replies data.
     const { data, error } = useSWR<IReply[], Error>(`${NEXT_PUBLIC_API_REPLIES_PARENT_URL}/${id}`, fetcher);
 
+    // Sort the replies data in ascending (earliest to latest).
+    let sortedReplies : IReply[] = []
+    if (data) {
+      sortedReplies  = data.sort((a,b) => moment(a.createdAt.toString()).valueOf() - moment(b.createdAt.toString()).valueOf());
+    }
+
+    // Return data.
     return {
-      replies: data,
+      replies: sortedReplies,
       isLoading: !error && !data,
       isError: error
     }
