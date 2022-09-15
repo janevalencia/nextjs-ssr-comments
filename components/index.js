@@ -6,3 +6,4 @@ export { default as AddForm } from "./AddForm";
 export { default as ReplyForm } from "./ReplyForm";
 export { default as EditForm } from "./EditForm";
 export { default as Modal } from "./Modal";
+export { default as Vote } from "./Vote";

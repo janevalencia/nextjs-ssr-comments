@@ -1,10 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const defaultVotes = {
     votes : 0,
 }
 
-const Vote = ( { votes } : { votes : number } ) => {
+type VoteProps = {
+    votes : number
+} & typeof defaultVotes;
+
+const Vote = ( { votes } : VoteProps ) => {
     const [ vote, setVote ] = useState<number>(votes);
 
     // Upvote comment.
