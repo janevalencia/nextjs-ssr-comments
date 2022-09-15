@@ -13,11 +13,14 @@ const Home = ( {currentUser, comments} :  InferGetServerSidePropsType<typeof get
       </Head>
       <main className="section flex min-h-screen flex-col justify-top p-4 md:p-8">
         <section className="flex flex-col mb-6 w-full">
-          {comments.map( (comment, index) => (
-            <article key={index}>
-              <CommentCard currentUser={currentUser} comment={comment} />
-            </article>
-          ) )}
+          {comments
+            .sort((a, b) => a.score < b.score ? 1 : -1)
+            .map((comment, index) => (
+              <article key={index}>
+                <CommentCard currentUser={currentUser} comment={comment} />
+              </article>
+            ))
+          }
         </section>
         <section className="comments-new">
           <AddForm currentUser={currentUser} />
