@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import moment from "moment";
-import { ReplyForm, Modal, EditForm, ReplyCard, Vote } from "./";
+import { ReplyForm, Modal, EditForm, ReplyCard, Vote, Spinner } from "./";
 import { IUser, IComment } from "../interfaces";
 import { useReply } from "../utils/useReply";
 
@@ -14,6 +14,7 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
 
     // Manage this comment's list of replies (if exist).
     const { replies, isLoading, isError } = useReply(comment._id);
+    if (isError) return <Spinner message="Failed to load ... Something is wrong!" /> 
 
     // Manage state of Reply Form toggle (display / hide).
     const [ showReplyForm, setShowReplyForm ] = useState<boolean>(false);
@@ -125,18 +126,21 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
 
             {/* Comment-Replies */}
             <div className="section comment-reply flex flex-row">
-                { replies && (<div className="comment-reply__line mr-4 md:mx-8 mt-2"></div>) }
-                { replies && replies.length > 0 && 
+                { isLoading && (<Spinner message="Loading ..." />)}
+                { !isLoading && replies && replies.length > 0 &&
                     (
-                        <div className="flex flex-col grow pt-2">
-                            {
-                                replies.map( (reply, index) => (
-                                    <article key={index}>
-                                        <ReplyCard currentUser={currentUser} reply={reply} />
-                                    </article>
-                                ) ) 
-                            }
-                        </div>
+                        <>
+                            <div className="comment-reply__line mr-4 md:mx-8 mt-2"></div>
+                            <div className="flex flex-col grow pt-2">
+                                {
+                                    replies.map( (reply, index) => (
+                                        <article key={index}>
+                                            <ReplyCard currentUser={currentUser} reply={reply} />
+                                        </article>
+                                    ) ) 
+                                }
+                            </div>
+                        </>
                     )
                 }
             </div>
