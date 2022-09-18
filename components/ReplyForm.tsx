@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { IComment, IUser } from "../interfaces";
+import { IUser } from "../interfaces";
 
 type ReplyFormProps = {
     currentUser : IUser,
