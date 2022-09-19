@@ -32,11 +32,13 @@ const CommentForm = ( { currentUser } : CommentFormProps ) => {
                     placeholder="Add a comment..."
                     className="comment-form__inputbox border rounded-md p-3 row-start-1 col-span-2 md:flex-grow"
                 />
-                <input 
-                    type="submit" 
-                    value="SEND"
+                <button 
                     className="button button__cta rounded-lg w-28 h-12 row-start-2 justify-self-end"
-                />
+                    type="submit"
+                    disabled={!commentContent}
+                >
+                    SEND
+                </button>
             </form>
         </div>
     );
