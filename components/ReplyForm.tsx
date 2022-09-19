@@ -33,11 +33,13 @@ const ReplyForm = ( { currentUser, parentComment, replyingTo } : ReplyFormProps 
                     onChange={handleChange} 
                     className="comment-form__inputbox border rounded-md p-3 row-start-1 col-span-2 md:flex-grow"
                 />
-                <input 
-                    type="submit" 
-                    value="REPLY" 
+                <button 
                     className="button button__cta rounded-lg w-28 h-12 row-start-2 justify-self-end"
-                />
+                    type="submit"
+                    disabled={commentContent == `@${replyingTo} `}
+                >
+                    REPLY
+                </button>
             </form>
         </div>
     );
