@@ -39,3 +39,11 @@ body {
   left: 50%;
   transform: var(--translate-effect)
 }
+
+.input-prompt {
+  &__red {
+    color: var(--primary-soft-red);
+    font-size: var(--sm-font-size);
+    font-weight: var(--fw-light);
+  }
+}
