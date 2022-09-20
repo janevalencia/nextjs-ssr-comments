@@ -1,10 +1,19 @@
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
+import { useRouter } from 'next/router';
 import { IUser, IComment, IReply } from "../interfaces";
 import { CommentCard, AddForm } from "../components";
 
 // Define Index page component.
 const Home = ( {currentUser, comments} :  InferGetServerSidePropsType<typeof getServerSideProps> ) => {
+  // Get next router.
+  const router = useRouter();
+
+  // Call this function whenever you want to refresh the props.
+  const refreshData = () => {
+    router.replace(router.asPath);
+  }
+  
   return (
     <>
       <Head>
@@ -14,7 +23,7 @@ const Home = ( {currentUser, comments} :  InferGetServerSidePropsType<typeof get
       <main className="section flex min-h-screen flex-col justify-top p-4 md:p-8">
         <section className="flex flex-col mb-6 w-full">
           {comments
-            .sort((a, b) => a.score < b.score ? 1 : -1)
+            .sort((a, b) => a.score > b.score ? -1 : 1)
             .map((comment, index) => (
               <article key={index}>
                 <CommentCard currentUser={currentUser} comment={comment} />
@@ -23,7 +32,7 @@ const Home = ( {currentUser, comments} :  InferGetServerSidePropsType<typeof get
           }
         </section>
         <section className="comments-new">
-          <AddForm currentUser={currentUser} />
+          <AddForm currentUser={currentUser} refreshData={refreshData} />
         </section>
       </main>
     </>

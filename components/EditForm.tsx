@@ -15,7 +15,7 @@ const EditForm = ( { comment, reply } : EditFormProps ) => {
         }
 
         if (reply) {
-            setContent(reply.content);
+            setContent(`@${reply.replyingTo} ${reply.content}`);
         }
     }, [comment, reply])
 
@@ -27,15 +27,17 @@ const EditForm = ( { comment, reply } : EditFormProps ) => {
     return (
         <form className="flex flex-col">
             <textarea 
-                value={ reply ? `@${reply.replyingTo} ${content}` : content }
+                value={content}
                 onChange={handleChange} 
                 className="edit-form__inputbox border rounded-md p-3"
             />
-            <input 
-                type="submit" 
-                value="UPDATE"
+            <button 
                 className="button button__cta mt-3 mb-1 rounded-lg w-28 h-12 self-end"
-            />
+                type="submit"
+                disabled={!content}
+            >
+                UPDATE
+            </button>
         </form>
     );
 }

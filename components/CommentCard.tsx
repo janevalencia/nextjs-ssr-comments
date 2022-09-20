@@ -41,7 +41,7 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
 
     return (
         <>
-            <div className="comment-card__item p-4 mb-2 rounded-md">
+            <div className="comment-card__item p-4 mb-2 mt-2 rounded-md">
                 <div className="grid grid-flow-col place-content-start md:grid-cols-3 md:grid-rows-3 gap-x-4 gap-y-2">
 
                     {/* Comment-Voting */}
@@ -131,7 +131,7 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
                     (
                         <>
                             <div className="comment-reply__line mr-4 md:mx-8 mt-2"></div>
-                            <div className="flex flex-col grow pt-2">
+                            <div className="grow pt-2">
                                 {
                                     replies.map( (reply, index) => (
                                         <article key={index}>
