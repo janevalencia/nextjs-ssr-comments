@@ -30,7 +30,7 @@ const CommentForm = ( { currentUser, refreshData } : CommentFormProps ) => {
         if (refComment.current) {
             // Construct POST Comment structure.
             const comment = {
-                content: refComment.current.value,
+                content: refComment.current.value.toString(),
                 score: 0,
                 user: currentUser._id
             }
