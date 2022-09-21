@@ -46,7 +46,7 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
 
                     {/* Comment-Voting */}
                     <div className="row-start-2 md:row-span-3 col-end-1">
-                        <Vote votes={ comment.score } />
+                        <Vote votes={ comment.score } id={ comment._id } type="comment" />
                     </div>
 
                     {/* Comment-User */}
