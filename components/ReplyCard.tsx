@@ -41,7 +41,7 @@ const ReplyCard = ( { currentUser, reply } : ReplyCardProps ) => {
 
                     {/* Comment-Voting */}
                     <div className="row-start-2 md:row-span-3 col-end-1">
-                        <Vote votes={ reply.score } />
+                        <Vote votes={ reply.score } id={ reply._id } type="reply" />
                     </div>
 
                     {/* Comment-User */}
