@@ -1,19 +1,10 @@
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
-import { useRouter } from 'next/router';
 import { IUser, IComment, IReply } from "../interfaces";
 import { CommentCard, AddForm } from "../components";
 
 // Define Index page component.
 const Home = ( {currentUser, comments} :  InferGetServerSidePropsType<typeof getServerSideProps> ) => {
-  // Get next router.
-  const router = useRouter();
-
-  // Call this function whenever you want to refresh the props.
-  const refreshData = () => {
-    router.replace(router.asPath);
-  }
-  
   return (
     <>
       <Head>
@@ -32,7 +23,7 @@ const Home = ( {currentUser, comments} :  InferGetServerSidePropsType<typeof get
           }
         </section>
         <section className="comments-new">
-          <AddForm currentUser={currentUser} refreshData={refreshData} />
+          <AddForm currentUser={currentUser} />
         </section>
       </main>
     </>

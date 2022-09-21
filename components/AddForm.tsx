@@ -1,13 +1,16 @@
 import React, { useRef, FormEventHandler, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { IUser } from "../interfaces";
 
 type CommentFormProps = {
     currentUser : IUser
-    refreshData : Function
 };
 
-const CommentForm = ( { currentUser, refreshData } : CommentFormProps ) => {
+const CommentForm = ( { currentUser } : CommentFormProps ) => {
+
+    // Get next-router.
+    const router = useRouter();
 
     // Manage input-prompt message state.
     const [error, setError] = useState("");
@@ -52,8 +55,8 @@ const CommentForm = ( { currentUser, refreshData } : CommentFormProps ) => {
             // Clear the refs value for next use.
             refComment.current.value = "";
 
-            // Refresh props from server.
-            refreshData();
+            // Reload the page without adding to history stack.
+            return router.replace(router.asPath);
         }
     }
 
