@@ -78,7 +78,7 @@ const CommentForm = ( { currentUser } : CommentFormProps ) => {
                 </div>
                 <div className="row-start-1 col-span-2 md:flex-grow">
                     <textarea 
-                        className="comment-form__inputbox border rounded-md p-3  w-full"
+                        className="comment-form__inputbox border rounded-md p-3 w-full"
                         placeholder="Add a comment..."
                         ref={refComment}
                     />
