@@ -117,9 +117,11 @@ const ReplyCard = ( { currentUser, reply } : ReplyCardProps ) => {
             </div>
 
             {/* Reply Form */}
-            { showReplyForm && (
-                <ReplyForm currentUser={currentUser} parentComment={reply.parent} replyingTo={reply.user.username}/>
-            ) }
+            { showReplyForm && 
+                (
+                    <ReplyForm currentUser={currentUser} parentCommentID={reply.parent} replyingTo={reply.user.username}/>
+                ) 
+            }
 
             { openModal && ( 
                     <Modal 
