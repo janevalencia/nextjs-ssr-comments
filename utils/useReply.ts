@@ -10,9 +10,11 @@ if ( !NEXT_PUBLIC_API_REPLIES_PARENT_URL ) {
 // Define fetcher wrapper.
 const fetcher: Fetcher<IReply[], string> = (url) => fetch(url).then(res => res.json());
 
-export const useReply = (id : string) => {
+export const useReply = (id : string | null) => {
     // Fetch replies data.
-    const { data, error } = useSWR<IReply[], Error>(`${NEXT_PUBLIC_API_REPLIES_PARENT_URL}/${id}`, fetcher);
+    const { data, error } = useSWR<IReply[], Error>(
+      id ? `${NEXT_PUBLIC_API_REPLIES_PARENT_URL}/${id}` : null, fetcher
+    );
 
     // Sort the replies data in ascending (earliest to latest).
     let sortedReplies : IReply[] = []
