@@ -60,7 +60,7 @@ const CommentForm = ( { currentUser } : CommentFormProps ) => {
         }
     }
 
-    
+    // Render component.
     return (
         <div className="comment-form p-4 mb-2 rounded-md">
             <form 
