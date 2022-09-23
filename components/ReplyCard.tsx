@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import moment from "moment";
 import { ReplyForm, Modal, EditForm, Vote } from "./";
 import { IUser, IReply } from "../interfaces";
@@ -10,6 +11,9 @@ type ReplyCardProps = {
 };
 
 const ReplyCard = ( { currentUser, reply } : ReplyCardProps ) => {
+
+    // Get next-router.
+    const router = useRouter();
 
     // Manage state of Reply Form toggle (display / hide).
     const [ showReplyForm, setShowReplyForm ] = useState<boolean>(false);
@@ -33,6 +37,17 @@ const ReplyCard = ( { currentUser, reply } : ReplyCardProps ) => {
 
     // Manage state of Delete Modal toggle.
     const [ openModal, setOpenModal ] = useState<boolean>(false);
+
+    // Handle delete reply.
+    const handleDelete = async () : Promise<void> => {
+
+        // Execute DELETE: api/comments/[id] to delete a comment.
+        const { NEXT_PUBLIC_API_REPLIES_URL } = process.env;
+        await fetch(`${NEXT_PUBLIC_API_REPLIES_URL}/${reply._id}`, {method: "DELETE"})
+
+        // Reload the page.
+        router.reload();
+    }
 
     return (
         <>
@@ -123,12 +138,14 @@ const ReplyCard = ( { currentUser, reply } : ReplyCardProps ) => {
                 ) 
             }
 
+            {/* Open modal for deletion */}
             { openModal && ( 
                     <Modal 
                         setOn={setOpenModal} 
                         title={`Delete comment`} 
                         promptText={`Are you sure you want to delete this comment? This will remove the comment and can't be undone`} 
                         btnType={'DELETE'} 
+                        handleDelete={handleDelete}
                     />
             ) }
         </>

@@ -34,6 +34,12 @@
             background-color: transparent;
             color: var(--primary-blue);
         }
+
+        &:disabled {
+            background-color: var(--secondary-greyish-blue);
+            color: var(--secondary-white);
+            opacity: 0.6;
+        }
     }
 
     &__modal-btn-confirm-delete {
@@ -43,6 +49,11 @@
 
         &:hover {
             background-color: var(--primary-blue);
+        }
+
+        &:disabled {
+            background-color: var(--primary-blue);
+            opacity: 0.6;
         }
     }
 }

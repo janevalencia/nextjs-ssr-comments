@@ -103,7 +103,7 @@ const EditForm = ( { comment, reply } : EditFormProps ) => {
         // Set content to empty so the UPDATE button is disabled.
         setContent("");
 
-        // Reload the page without adding to history stack.
+        // Reload the page.
         router.reload();
     }
 
