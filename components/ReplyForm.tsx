@@ -27,12 +27,10 @@ const ReplyForm = ( { currentUser, parentCommentID, replyingTo } : ReplyFormProp
         
         // Verify the required @replyingTo exists.
         if (!replyContent.startsWith(prefix)) {
-            setError(`Invalid reply: Missing the @${replyingTo} tag.`);
+            setError(`Invalid reply: Missing or invalid ${prefix} tag.`);
         } else {
             setError("");
         }
-
-        console.log(replyContent);
     }
 
     // Handle add a reply form submission.
