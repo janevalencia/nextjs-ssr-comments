@@ -1,20 +1,32 @@
-import { Dispatch, SetStateAction } from 'react';
+import { useState, Dispatch, SetStateAction } from 'react';
+import Spinner from './Spinner';
 
 type ModalProps = {
     setOn : Dispatch<SetStateAction<boolean>>,
     title? : string,
     promptText? : string,
     btnType? : string,
+    handleDelete? : Function
 }
 
-const Modal = ( { setOn, title, promptText, btnType } : ModalProps ) => {
+const Modal = ( { setOn, title, promptText, btnType, handleDelete } : ModalProps ) => {
 
-    const deleteComment = () : void => {
-        // Temp: will be changed to run DELETE operation.
-        console.log( 'Comment deleted.' )
+    // Manage button enabled/disabled state.
+    const [ disabled, setDisabled ] = useState<boolean>(false);
 
-        // Close Modal once delete is done!
-        setOn( false );
+    // Manage loading state.
+    const [ loading, setLoading ] = useState<boolean>(false);
+
+    // Run when delete is confirmed.
+    const confirmDelete = () : void => {
+        // Disable the buttons.
+        setDisabled(true);
+
+        // Set loading to true.
+        setLoading(true);
+
+        // Execute delete comment or reply.
+        if (handleDelete) handleDelete();
     }
 
     return (
@@ -29,7 +41,9 @@ const Modal = ( { setOn, title, promptText, btnType } : ModalProps ) => {
 
                     {/* Modal Prompt Text */}
                     <div className="modal__modal-body my-2">
-                        {promptText}
+                        {!loading ? promptText : (
+                            <Spinner message='Delete In Progress ...' />
+                        )}
                     </div>
 
                     {/* Modal CTA */}
@@ -37,6 +51,7 @@ const Modal = ( { setOn, title, promptText, btnType } : ModalProps ) => {
                         <button 
                             className="modal__modal-btn-close p-3 rounded-md w-full"
                             onClick={ () => setOn(false) }
+                            disabled={disabled}
                         >
                             NO, CANCEL
                         </button>
@@ -44,7 +59,8 @@ const Modal = ( { setOn, title, promptText, btnType } : ModalProps ) => {
                             (
                                 <button 
                                     className="modal__modal-btn-confirm-delete p-3 rounded-md w-full"
-                                    onClick={ deleteComment }
+                                    onClick={confirmDelete}
+                                    disabled={disabled}
                                 >
                                     YES, DELETE
                                 </button>
