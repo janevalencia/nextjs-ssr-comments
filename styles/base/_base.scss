@@ -46,4 +46,10 @@ body {
     font-size: var(--sm-font-size);
     font-weight: var(--fw-light);
   }
+
+  &__success {
+    color: var(--primary-blue);
+    font-size: var(--sm-font-size);
+    font-weight: var(--fw-light);
+  }
 }

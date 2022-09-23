@@ -27,12 +27,10 @@ const ReplyForm = ( { currentUser, parentCommentID, replyingTo } : ReplyFormProp
         
         // Verify the required @replyingTo exists.
         if (!replyContent.startsWith(prefix)) {
-            setError(`Invalid reply: Missing the @${replyingTo} tag.`);
+            setError(`Invalid reply: Missing or invalid ${prefix} tag.`);
         } else {
             setError("");
         }
-
-        console.log(replyContent);
     }
 
     // Handle add a reply form submission.
@@ -43,7 +41,7 @@ const ReplyForm = ( { currentUser, parentCommentID, replyingTo } : ReplyFormProp
         setError("");
 
         // Return error-prompt if upon submission @replyingTo (prefix) is still missing.
-        if (!replyContent.startsWith(prefix)) return setError(`Invalid reply: Missing the @${replyingTo} tag.`);
+        if (!replyContent.startsWith(prefix)) return setError(`Invalid reply: Missing or invalid ${prefix} tag.`);
             
         // Extract the index of replyingTo (prefix) from the reply-content.
         const index : number = prefix.length;
