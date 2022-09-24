@@ -52,7 +52,7 @@ const Modal = ( { isOpen, setOn, title, promptText, btnType, handleDelete } : Mo
                     {/* Modal CTA */}
                     <div className="flex flex-row justify-between gap-4 mt-4 modal__modal-btn">
                         <button 
-                            className="modal__modal-btn-close p-3 rounded-md w-full"
+                            className="modal__modal-btn-close px-2 py-3 rounded-md w-full"
                             onClick={ () => setOn(false) }
                             disabled={disabled}
                         >
@@ -61,7 +61,7 @@ const Modal = ( { isOpen, setOn, title, promptText, btnType, handleDelete } : Mo
                         { btnType && btnType.toLowerCase() === 'delete' &&
                             (
                                 <button 
-                                    className="modal__modal-btn-confirm-delete p-3 rounded-md w-full"
+                                    className="modal__modal-btn-confirm-delete px-2 py-3 rounded-md w-full"
                                     onClick={confirmDelete}
                                     disabled={disabled}
                                 >
