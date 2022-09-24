@@ -1,3 +1,7 @@
 .comment-form {
     background-color: var(--secondary-white);
+
+    &__inputbox {
+        color: var(--secondary-greyish-blue);
+    }
 }
