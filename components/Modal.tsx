@@ -1,15 +1,18 @@
 import { useState, Dispatch, SetStateAction } from 'react';
-import Spinner from './Spinner';
+import { Spinner, ReactPortal } from './';
 
 type ModalProps = {
-    setOn : Dispatch<SetStateAction<boolean>>,
-    title? : string,
-    promptText? : string,
-    btnType? : string,
+    isOpen        : boolean,
+    setOn         : Dispatch<SetStateAction<boolean>>,
+    title?        : string,
+    promptText?   : string,
+    btnType?      : string,
     handleDelete? : Function
 }
 
-const Modal = ( { setOn, title, promptText, btnType, handleDelete } : ModalProps ) => {
+const Modal = ( { isOpen, setOn, title, promptText, btnType, handleDelete } : ModalProps ) => {
+
+    if (!isOpen) return null;
 
     // Manage button enabled/disabled state.
     const [ disabled, setDisabled ] = useState<boolean>(false);
@@ -30,7 +33,7 @@ const Modal = ( { setOn, title, promptText, btnType, handleDelete } : ModalProps
     }
 
     return (
-        <>
+        <ReactPortal wrapperId="react-portal-modal-container">
             <div className="transparent-bg" onClick={ () => setOn(false) } />
             <div className="centered-effect">
                 <div className="modal px-8 py-6 rounded-md">
@@ -49,7 +52,7 @@ const Modal = ( { setOn, title, promptText, btnType, handleDelete } : ModalProps
                     {/* Modal CTA */}
                     <div className="flex flex-row justify-between gap-4 mt-4 modal__modal-btn">
                         <button 
-                            className="modal__modal-btn-close p-3 rounded-md w-full"
+                            className="modal__modal-btn-close px-2 py-3 rounded-md w-full"
                             onClick={ () => setOn(false) }
                             disabled={disabled}
                         >
@@ -58,7 +61,7 @@ const Modal = ( { setOn, title, promptText, btnType, handleDelete } : ModalProps
                         { btnType && btnType.toLowerCase() === 'delete' &&
                             (
                                 <button 
-                                    className="modal__modal-btn-confirm-delete p-3 rounded-md w-full"
+                                    className="modal__modal-btn-confirm-delete px-2 py-3 rounded-md w-full"
                                     onClick={confirmDelete}
                                     disabled={disabled}
                                 >
@@ -69,7 +72,7 @@ const Modal = ( { setOn, title, promptText, btnType, handleDelete } : ModalProps
                     </div>
                 </div>
             </div>
-        </>
+        </ReactPortal>
     );
 }
 

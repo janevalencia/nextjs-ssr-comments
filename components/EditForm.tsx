@@ -115,7 +115,7 @@ const EditForm = ( { comment, reply } : EditFormProps ) => {
             <textarea 
                 value={content}
                 onChange={handleChange} 
-                className="edit-form__inputbox border rounded-md p-3"
+                className="comment-form__inputbox border rounded-md p-3"
             />
             {error !== "" && (<span className="input-prompt__red pt-2">{error}</span>)}
             {success !== "" && (<span className="input-prompt__success pt-2">{success}</span>)}
