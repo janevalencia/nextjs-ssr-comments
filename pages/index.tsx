@@ -38,7 +38,7 @@ export const getServerSideProps: GetServerSideProps<{
   // Caching config.
   context.res.setHeader(
     'Cache-Control',
-    'public, s-maxage=10, stale-while-revalidate=59'
+    'no-cache, max-age=0, must-revalidate'
   )
 
   // Get current environment variable.
