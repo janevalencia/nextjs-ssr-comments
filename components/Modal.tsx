@@ -1,15 +1,18 @@
 import { useState, Dispatch, SetStateAction } from 'react';
-import Spinner from './Spinner';
+import { Spinner, ReactPortal } from './';
 
 type ModalProps = {
-    setOn : Dispatch<SetStateAction<boolean>>,
-    title? : string,
-    promptText? : string,
-    btnType? : string,
+    isOpen        : boolean,
+    setOn         : Dispatch<SetStateAction<boolean>>,
+    title?        : string,
+    promptText?   : string,
+    btnType?      : string,
     handleDelete? : Function
 }
 
-const Modal = ( { setOn, title, promptText, btnType, handleDelete } : ModalProps ) => {
+const Modal = ( { isOpen, setOn, title, promptText, btnType, handleDelete } : ModalProps ) => {
+
+    if (!isOpen) return null;
 
     // Manage button enabled/disabled state.
     const [ disabled, setDisabled ] = useState<boolean>(false);
@@ -30,7 +33,7 @@ const Modal = ( { setOn, title, promptText, btnType, handleDelete } : ModalProps
     }
 
     return (
-        <>
+        <ReactPortal wrapperId="react-portal-modal-container">
             <div className="transparent-bg" onClick={ () => setOn(false) } />
             <div className="centered-effect">
                 <div className="modal px-8 py-6 rounded-md">
@@ -69,7 +72,7 @@ const Modal = ( { setOn, title, promptText, btnType, handleDelete } : ModalProps
                     </div>
                 </div>
             </div>
-        </>
+        </ReactPortal>
     );
 }
 
