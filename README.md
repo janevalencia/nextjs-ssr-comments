@@ -29,18 +29,19 @@ Again, you are free to choose other framework to craft your solution for this fu
 
 Your users should be able to:
 
-- [ ] View the optimal layout for the app depending on their device's screen size (mobile & desktop).
-- [ ] See hover states for all interactive elements on the page.
-- [ ] Create, Read, Update, and Delete comments and replies.
-- [ ] Upvote and downvote comments.
-- [ ] State is saved in database (or if you are creating a full front-end project, then make use of localStorage).
-- [ ] Instead of using the `createdAt` strings from the `data.json` file, try using timestamps and dynamically track the time since the comment or reply was posted.
-- [ ] First-level comments should be ordered by their score.
-- [ ] Nested replies are ordered by time added (earliest to latest).
-- [ ] Replying to a comment adds the new reply to the bottom of the nested replies within that comment.
-- [ ] A confirmation modal should pop up before a comment or reply is deleted.
-- [ ] Adding a new comment or reply uses the `currentUser` object from within the `db.json` file (or if you have used db / localStorage to store `currentUser`).
-- [ ] You can only edit or delete your own comments and replies.
+- [x] View the optimal layout for the app depending on their device's screen size (mobile & desktop).
+- [x] See hover states for all interactive elements on the page.
+- [x] Create, Read, Update, and Delete comments and replies.
+- [x] Upvote and downvote comments.
+- [x] State is saved in database (or if you are creating a full front-end project, then make use of localStorage).
+- [x] Instead of using the `createdAt` strings from the `data.json` file, try using timestamps and dynamically track the time since the comment or reply was posted.
+- [x] First-level comments should be ordered by their score.
+- [x] First-level comment with the same score will be ordered by time added (earlist to latest).
+- [x] Nested replies are ordered by time added (earliest to latest).
+- [x] Replying to a comment adds the new reply to the bottom of the nested replies within that comment.
+- [x] A confirmation modal should pop up before a comment or reply is deleted (**Bonus:** Make use of react-portals to handle Modal).
+- [x] Adding a new comment or reply uses the `currentUser` object from within the `db.json` file (or if you have used db / localStorage to store `currentUser`).
+- [x] You can only edit or delete your own comments and replies.
 
 ## Assets
 
