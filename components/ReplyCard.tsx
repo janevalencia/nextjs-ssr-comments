@@ -134,7 +134,7 @@ const ReplyCard = ( { currentUser, reply } : ReplyCardProps ) => {
             {/* Reply Form */}
             { showReplyForm && 
                 (
-                    <ReplyForm currentUser={currentUser} parentCommentID={reply.parent} replyingTo={reply.user.username}/>
+                    <ReplyForm currentUser={currentUser} parentCommentID={reply.parent as string} replyingTo={reply.user.username}/>
                 ) 
             }
 

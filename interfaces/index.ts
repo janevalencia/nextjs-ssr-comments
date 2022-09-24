@@ -26,7 +26,7 @@ export interface IReply {
     score: number
     replyingTo: string
     user: IUser
-    parent: string
+    parent: IComment | string
     createdAt: Date
     updatedAt: Date
 }
