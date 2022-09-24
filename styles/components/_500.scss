@@ -1,0 +1,10 @@
+.server-error {
+    &__title {
+        font-size: var(--lg-font-size);
+    }
+
+    &__subtitle {
+        font-size: var(--md3-font-size);
+        font-weight: var(--fw-bold);
+    }
+}
