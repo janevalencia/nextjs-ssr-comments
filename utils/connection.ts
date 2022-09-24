@@ -10,7 +10,7 @@ if (!DB_SERVER_URL) {
 
 // Connect to database server.
 export const dbConnect = async () => {
-  const conn = await connect( DB_SERVER_URL! )
+  const conn = await connect( DB_SERVER_URL! as string )
     .catch( e => console.log(e) );
   
   console.log("Connection established.");
