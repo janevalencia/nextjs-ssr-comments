@@ -25,6 +25,8 @@ For the solution I develop here, I am taking it slightly further by using:
 
 Again, you are free to choose other framework to craft your solution for this fun challenge!
 
+**DISCLAIMER:** There are no such thing as "one solution fits all"! Hence, while comparing solution, if you figure out ways how I can further improve the project solution, please drop in to discussion. Let's all learn from each other!
+
 ### Requirement
 
 Your users should be able to:
@@ -73,16 +75,10 @@ As mentioned above, there are many ways to host your project for free.
 Our recommended hosts are:
 
 - [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/) (recommended, if you are following this particular solution)
+- [Vercel](https://vercel.com/) (recommended, if you are following this particular solution using NextJS)
 - [Netlify](https://www.netlify.com/)
 
 You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
-
-## Wiki
-
-I have created a step-by-step processes done to develop this fem-challenge in the Wiki page [TBA](). I strongly suggest you start working on your solution first and then comeback to this section when you are ready to compare and review your solution. 
-
-DISCLAIMER: There are no such thing as "one solution fits all"! Hence, while comparing solution, if you figure out ways how I can further improve the project solution, please drop in to discussion. Let's all learn from each other!
 
 ## Submitting your solution to Frontend Mentor (FEM)
 
