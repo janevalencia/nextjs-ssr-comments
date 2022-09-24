@@ -160,16 +160,15 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
                 }
             </div>
 
-            {/* Open modal for deletion */}
-            { openModal && ( 
-                    <Modal 
-                        setOn={setOpenModal} 
-                        title={`Delete comment`} 
-                        promptText={`Are you sure you want to delete this comment? This will remove the comment and can't be undone`} 
-                        btnType={'DELETE'} 
-                        handleDelete={handleDelete}
-                    />
-            ) }
+            {/* Modal for deletion */}
+            <Modal 
+                isOpen={openModal}
+                setOn={setOpenModal} 
+                title={`Delete comment`} 
+                promptText={`Are you sure you want to delete this comment? This will remove the comment and can't be undone.`} 
+                btnType={'DELETE'} 
+                handleDelete={handleDelete}
+            />
         </>
     );
 }

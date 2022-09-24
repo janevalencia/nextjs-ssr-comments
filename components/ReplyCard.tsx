@@ -139,15 +139,14 @@ const ReplyCard = ( { currentUser, reply } : ReplyCardProps ) => {
             }
 
             {/* Open modal for deletion */}
-            { openModal && ( 
-                    <Modal 
-                        setOn={setOpenModal} 
-                        title={`Delete comment`} 
-                        promptText={`Are you sure you want to delete this comment? This will remove the comment and can't be undone`} 
-                        btnType={'DELETE'} 
-                        handleDelete={handleDelete}
-                    />
-            ) }
+            <Modal 
+                isOpen={openModal}
+                setOn={setOpenModal} 
+                title={`Delete comment`} 
+                promptText={`Are you sure you want to delete this reply? This will remove the reply and can't be undone.`} 
+                btnType={'DELETE'} 
+                handleDelete={handleDelete}
+            />
         </>
     );
 }
