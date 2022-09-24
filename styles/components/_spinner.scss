@@ -1,0 +1,10 @@
+.spinner {
+    &__spin {
+        background-color: var(--primary-blue);
+    }
+
+    &__text {
+        color: var(--secondary-dark-blue);
+        font-weight: var(--fw-light);
+    }
+}

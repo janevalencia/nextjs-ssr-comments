@@ -2,23 +2,18 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import moment from "moment";
-import { ReplyForm, Modal, EditForm, ReplyCard, Vote, Spinner } from "./";
-import { IUser, IComment } from "../interfaces";
-import { useReply } from "../utils/useReply";
+import { ReplyForm, Modal, EditForm, Vote } from "./";
+import { IUser, IReply } from "../interfaces";
 
-type CommentCardProps = {
+type ReplyCardProps = {
     currentUser : IUser,
-    comment : IComment
+    reply : IReply
 };
 
-const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
+const ReplyCard = ( { currentUser, reply } : ReplyCardProps ) => {
 
     // Get next-router.
     const router = useRouter();
-
-    // Manage this comment's list of replies (if exist).
-    const { replies, isLoading, isError } = useReply(comment._id);
-    if (isError) return <Spinner message="Failed to load ... Something is wrong!" /> 
 
     // Manage state of Reply Form toggle (display / hide).
     const [ showReplyForm, setShowReplyForm ] = useState<boolean>(false);
@@ -43,12 +38,12 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
     // Manage state of Delete Modal toggle.
     const [ openModal, setOpenModal ] = useState<boolean>(false);
 
-    // Handle delete comment.
+    // Handle delete reply.
     const handleDelete = async () : Promise<void> => {
 
         // Execute DELETE: api/comments/[id] to delete a comment.
-        const { NEXT_PUBLIC_API_COMMENTS_URL } = process.env;
-        await fetch(`${NEXT_PUBLIC_API_COMMENTS_URL}/${comment._id}`, {method: "DELETE"})
+        const { NEXT_PUBLIC_API_REPLIES_URL } = process.env;
+        await fetch(`${NEXT_PUBLIC_API_REPLIES_URL}/${reply._id}`, {method: "DELETE"})
 
         // Reload the page.
         router.reload();
@@ -56,12 +51,12 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
 
     return (
         <>
-            <div className="comment-card__item p-4 mb-2 mt-2 rounded-md">
+            <div className="comment-card__item p-4 mb-2 rounded-md">
                 <div className="grid grid-flow-col place-content-start md:grid-cols-3 md:grid-rows-3 gap-x-4 gap-y-2">
 
                     {/* Comment-Voting */}
                     <div className="row-start-2 md:row-span-3 col-end-1">
-                        <Vote votes={ comment.score } id={ comment._id } type="comment" />
+                        <Vote votes={ reply.score } id={ reply._id } type="reply" />
                     </div>
 
                     {/* Comment-User */}
@@ -69,17 +64,21 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
                         <div className="flex flex-row justify-start items-center gap-2 pt-1">
                             <div className="comment-card__user profile-img relative overflow-hidden flex items-center">
                                 <Image 
-                                    src={ comment.user.imageURL } 
-                                    alt={ comment.user.username }
+                                    src={ reply.user.imageURL } 
+                                    alt={ reply.user.username }
                                     width={35} 
                                     height={35} 
                                     className="absolute rounded-full object-cover w-full"
                                 />
                             </div>
-                            <p className="comment-card__user username">{ comment.user.username }</p>
-                            { comment.user.username === currentUser.username && (<span className="username username__active px-2">you</span>) }
+                            <p className="comment-card__user username">{ reply.user.username }</p>
+                            { reply.user.username === currentUser.username && 
+                                (
+                                    <span className="username username__active px-2">you</span>
+                                ) 
+                            }
                             <span className="comment-card__user date">
-                                { moment(comment.createdAt.toString()).format('MMM Do YYYY, H:mm') }
+                                { moment(reply.createdAt.toString()).format('MMM Do YYYY, H:mm') }
                             </span>
                         </div>
                     </div>
@@ -87,7 +86,7 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
                     {/* Comment-CTA-buttons */}
                     <div className="comment-card__actions row-start-2 md:row-start-1 col-end-4 justify-self-end self-center">
                         <div className="flex gap-6">
-                        { comment.user.username !== currentUser.username ? 
+                        { reply.user.username !== currentUser.username ? 
                         (
                             <button
                                 className="button button__reply flex flex-row items-center gap-x-2"
@@ -122,10 +121,10 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
                     <div className="comment-card__content md:row-span-2 col-span-4 md:col-span-3">
                     { showEditForm ? 
                         (
-                            <EditForm comment={comment} />
+                            <EditForm reply={reply} />
                         ) : 
                         (
-                            <p>{ comment.content }</p>
+                            <p><span className="comment-card__replying-to">@{reply.replyingTo}</span> { reply.content }</p>
                         )
                     }
                     </div>
@@ -134,38 +133,17 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
 
             {/* Reply Form */}
             { showReplyForm && 
-                ( 
-                    <ReplyForm currentUser={currentUser} parentCommentID={comment._id} replyingTo={comment.user.username} /> 
+                (
+                    <ReplyForm currentUser={currentUser} parentCommentID={reply.parent} replyingTo={reply.user.username}/>
                 ) 
             }
 
-            {/* Comment-Replies */}
-            <div className="section comment-reply flex flex-row">
-                { isLoading && (<Spinner message="Loading ..." />)}
-                { !isLoading && replies && replies.length > 0 &&
-                    (
-                        <>
-                            <div className="comment-reply__line mr-4 md:mx-8 mt-2"></div>
-                            <div className="grow pt-2">
-                                {
-                                    replies.map( (reply, index) => (
-                                        <article key={index}>
-                                            <ReplyCard currentUser={currentUser} reply={reply} />
-                                        </article>
-                                    ) ) 
-                                }
-                            </div>
-                        </>
-                    )
-                }
-            </div>
-
-            {/* Modal for deletion */}
+            {/* Open modal for deletion */}
             <Modal 
                 isOpen={openModal}
                 setOn={setOpenModal} 
                 title={`Delete comment`} 
-                promptText={`Are you sure you want to delete this comment? This will remove the comment and can't be undone.`} 
+                promptText={`Are you sure you want to delete this reply? This will remove the reply and can't be undone.`} 
                 btnType={'DELETE'} 
                 handleDelete={handleDelete}
             />
@@ -173,4 +151,4 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
     );
 }
 
-export default CommentCard;
+export default ReplyCard;

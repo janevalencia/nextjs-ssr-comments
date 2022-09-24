@@ -21,7 +21,7 @@
 
     &__modal-btn {
         cursor: pointer;
-        font-weight: var(--fw-bold);
+        font-weight: var(--fw-normal);
         text-align: center;
     }
 
@@ -34,6 +34,12 @@
             background-color: transparent;
             color: var(--primary-blue);
         }
+
+        &:disabled {
+            background-color: var(--secondary-greyish-blue);
+            color: var(--secondary-white);
+            opacity: 0.6;
+        }
     }
 
     &__modal-btn-confirm-delete {
@@ -43,6 +49,11 @@
 
         &:hover {
             background-color: var(--primary-blue);
+        }
+
+        &:disabled {
+            background-color: var(--primary-blue);
+            opacity: 0.6;
         }
     }
 }

@@ -1,5 +1,7 @@
 Solution developed by **Jane Valencia, 2022**
 
+Production-LIVE URL: [Vercel Prod_URL TBA]()
+
 # Frontend Mentor - Interactive comments section
 
 ![Design preview for the Interactive comments section coding challenge](./design/desktop-preview.jpg)
@@ -21,25 +23,29 @@ For the solution I develop here, I am taking it slightly further by using:
 - TailwindCSS
 - SASS
 - MongoDB / Mongoose
+- Other libraries: momentjs, swr, fontawesome
 
 Again, you are free to choose other framework to craft your solution for this fun challenge!
+
+**DISCLAIMER:** There are no such thing as "one solution fits all"! Hence, while comparing solution, if you figure out ways how I can further improve the project solution, please drop in to discussion. Let's all learn from each other!
 
 ### Requirement
 
 Your users should be able to:
 
-- View the optimal layout for the app depending on their device's screen size (mobile & desktop).
-- See hover states for all interactive elements on the page.
-- Create, Read, Update, and Delete comments and replies.
-- Upvote and downvote comments.
-- **Bonus**: If you're building a purely front-end project, use `localStorage` to save the current state in the browser that persists when the browser is refreshed.
-- **Bonus**: Instead of using the `createdAt` strings from the `data.json` file, try using timestamps and dynamically track the time since the comment or reply was posted.
-- First-level comments should be ordered by their score.
-- Nested replies are ordered by time added (earliest to latest).
-- Replying to a comment adds the new reply to the bottom of the nested replies within that comment.
-- A confirmation modal should pop up before a comment or reply is deleted.
-- Adding a new comment or reply uses the `currentUser` object from within the `db.json` file (or if you have used db / localStorage to store `currentUser`).
-- You can only edit or delete your own comments and replies.
+- [x] View the optimal layout for the app depending on their device's screen size (mobile & desktop).
+- [x] See hover states for all interactive elements on the page.
+- [x] Create, Read, Update, and Delete comments and replies.
+- [x] Upvote and downvote comments.
+- [x] State is saved in database (or if you are creating a full front-end project, then make use of localStorage).
+- [x] Instead of using the `createdAt` strings from the `data.json` file, try using timestamps and dynamically track the time since the comment or reply was posted.
+- [x] First-level comments should be ordered by their score.
+- [x] First-level comment with the same score will be ordered by time added (earlist to latest).
+- [x] Nested replies are ordered by time added (earliest to latest).
+- [x] Replying to a comment adds the new reply to the bottom of the nested replies within that comment.
+- [x] A confirmation modal should pop up before a comment or reply is deleted (**Bonus:** Make use of react-portals to handle Modal).
+- [x] Adding a new comment or reply uses the `currentUser` object from within the `db.json` file (or if you have used db / localStorage to store `currentUser`).
+- [x] You can only edit or delete your own comments and replies.
 
 ## Assets
 
@@ -71,20 +77,16 @@ As mentioned above, there are many ways to host your project for free.
 Our recommended hosts are:
 
 - [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/) (recommended, if you are following this particular solution)
+- [Vercel](https://vercel.com/) (recommended, if you are following this particular solution using NextJS)
 - [Netlify](https://www.netlify.com/)
 
 You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
 
-## Wiki
-
-I have created a step-by-step processes done to develop this fem-challenge in the Wiki page [TBA](). I strongly suggest you start working on your solution first and then comeback to this section when you are ready to compare and review your solution. 
-
-DISCLAIMER: There are no such thing as "one solution fits all"! Hence, while comparing solution, if you figure out ways how I can further improve the project solution, please drop in to discussion. Let's all learn from each other!
-
 ## Submitting your solution to Frontend Mentor (FEM)
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this. Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this. 
+
+Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
 
 ## Sharing your solution
 
@@ -93,10 +95,14 @@ There are multiple places you can share your solution:
 1. Share your solution page in the **#finished-projects** channel of the [Slack community](https://www.frontendmentor.io/slack). 
 2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
 3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [Medium](https://medium.com), [DEV.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
-
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
+## Last words
+I had a lot of fun building this challenge. Thank you for visiting this repo, and I hope you find this project useful! 
 
 **Have fun building!** 🚀
+
+Connect with me:
+
+- [LinkedIn](https://www.linkedin.com/in/janevalencia/)
+- [Medium](https://medium.com/@janevalencia)

@@ -1,71 +1,10 @@
-import type { NextPage } from "next";
+import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
-import { CommentCard, CommentForm } from "../components";
+import { IUser, IComment, IReply } from "../interfaces";
+import { CommentCard, AddForm } from "../components";
 
-// To be deleted later once DB is setup.
-const CurrentUser = {
-  "image": { 
-    "png": "/assets/images/image-juliusomo.png"
-  },
-  "username": "juliusomo",
-}
-const SampleData = [
-  {
-    "id": "1",
-    "content": "Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.",
-    "timestamp": "1 month ago",
-    "votes": 12,
-    "user": {
-      "image": { 
-        "png": "/assets/images/image-amyrobson.png"
-      },
-      "username": "amyrobson",
-    },
-    "replies": []
-  },
-  {
-    "id": "2",
-    "content": "Woah, your project looks awesome! How long have you been coding for? I'm still new, but think I want to dive into React as well soon. Perhaps you can give me an insight on where I can learn React? Thanks!",
-    "timestamp": "2 weeks ago",
-    "votes": 5,
-    "user": {
-      "image": { 
-        "png": "/assets/images/image-maxblagun.png"
-      },
-      "username": "maxblagun",
-    },
-    "replies": [
-      {
-        "id": "3",
-        "content": "If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.",
-        "timestamp": "1 week ago",
-        "votes": 4,
-        "replyingTo": "maxblagun",
-        "user": {
-          "image": { 
-            "png": "/assets/images/image-ramsesmiron.png"
-          },
-          "username": "ramsesmiron",
-        }
-      },
-      {
-        "id": "4",
-        "content": "I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.",
-        "timestamp": "2 days ago",
-        "votes": 2,
-        "replyingTo": "ramsesmiron",
-        "user": {
-          "image": { 
-            "png": "/assets/images/image-juliusomo.png"
-          },
-          "username": "juliusomo",
-        }
-      }
-    ]
-  }
-]
-
-const Home: NextPage = () => {
+// Define Index page component.
+const Home = ( {currentUser, comments} :  InferGetServerSidePropsType<typeof getServerSideProps> ) => {
   return (
     <>
       <Head>
@@ -74,18 +13,69 @@ const Home: NextPage = () => {
       </Head>
       <main className="section flex min-h-screen flex-col justify-top p-4 md:p-8">
         <section className="flex flex-col mb-6 w-full">
-          {SampleData.map( (data) => (
-            <article key={data.id}>
-              <CommentCard currentUser={CurrentUser} comment={data} />
-            </article>
-          ) )}
+          {comments
+            .sort((a, b) => a.score > b.score ? -1 : 1)
+            .map((comment, index) => (
+              <article key={index}>
+                <CommentCard currentUser={currentUser} comment={comment} />
+              </article>
+            ))
+          }
         </section>
         <section className="comments-new">
-          <CommentForm currentUser={ CurrentUser } />
+          <AddForm currentUser={currentUser} />
         </section>
       </main>
     </>
   )
+}
+
+// Get props from Server Side Rendering (run-time).
+export const getServerSideProps: GetServerSideProps<{
+  currentUser : IUser,
+  comments: IComment[]
+}> = async (context) => {
+  // Caching config.
+  context.res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=10, stale-while-revalidate=59'
+  )
+
+  // Get current environment variable.
+  const dev = process.env.NODE_ENV !== 'production';
+  const { 
+    DEV_URL, 
+    PROD_URL, 
+    NEXT_PUBLIC_API_USERS_URL, 
+    NEXT_PUBLIC_API_COMMENTS_URL, 
+    NEXT_PUBLIC_API_REPLIES_URL 
+  } = process.env;
+
+  // Fetch currentUser data from db (persisted currentUser = juliusomo, feel free to change).
+  const currentUser : IUser = await (await fetch(`${dev ? DEV_URL : PROD_URL}/${NEXT_PUBLIC_API_USERS_URL}/juliusomo`)).json();
+
+  // Fetch comment data from db.
+  const comments : IComment[] = await (await fetch(`${dev ? DEV_URL : PROD_URL}/${NEXT_PUBLIC_API_COMMENTS_URL}`)).json();
+
+  // Fetch reply data from db.
+  const replies : IReply[] = await (await fetch(`${dev ? DEV_URL : PROD_URL}/${NEXT_PUBLIC_API_REPLIES_URL}`)).json();
+
+  // Throw 404 page when API request failed.
+  if (!currentUser || !comments || !replies) {
+    console.log('Failed to fetch data from API routes!')
+    return {
+      notFound: true,
+    }
+  }
+
+  // Return props.
+  return {
+    props : {
+      currentUser,
+      comments,
+      replies
+    }
+  }
 }
 
 export default Home;

@@ -1,0 +1,16 @@
+.notfound {
+    &__title {
+        font-size: var(--lg-font-size);
+    }
+
+    &__subtitle {
+        font-size: var(--md3-font-size);
+        font-weight: var(--fw-bold);
+    }
+
+    &__description {
+        font-size: var(--normal-font-size);
+        font-weight: var(--fw-light);
+        line-height: 2;
+    }
+}

@@ -1,23 +1,43 @@
-import { Types } from "mongoose"
+// Interface used to define schema and model.
+import { Date } from "mongoose"
 
 export interface IUser {
-    username: string;
-    firstname: string;
-    lastname: string;
-    imageURL: string;
+    _id: string
+    username: string
+    firstname: string
+    lastname: string
+    imageURL: string
+    createdAt: Date
+    updatedAt: Date
 }
 
 export interface IComment {
-    content: string;
-    score: number;
-    user: Types.ObjectId;
-    replies: [Types.ObjectId];
+    _id: string
+    content: string
+    score: number
+    user: IUser
+    createdAt: Date
+    updatedAt: Date
 }
 
 export interface IReply {
-    content: string;
-    score: number;
-    replyingTo: string;
-    user: Types.ObjectId;
-    parent: Types.ObjectId;
+    _id: string
+    content: string
+    score: number
+    replyingTo: string
+    user: IUser
+    parent: string
+    createdAt: Date
+    updatedAt: Date
 }
+// ============= END ===============
+
+
+// Interface used to define response object.
+export interface ResponseFunctions {
+  GET?: Function
+  POST?: Function
+  PUT?: Function
+  DELETE?: Function
+}
+// ============= END ===============
