@@ -5,6 +5,8 @@
  import type { NextApiRequest, NextApiResponse } from 'next'
  import { dbConnect } from "../../../../utils/connection";
  import { ResponseFunctions } from '../../../../interfaces';
+ import User from '../../../../models/User';
+ import Comment from '../../../../models/Comment';
  import Reply from '../../../../models/Reply';
  
  const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -23,7 +25,13 @@
          GET: async (req: NextApiRequest, res: NextApiResponse) => {
              // Connect to database.
              await dbConnect();
- 
+
+             // Fetch all users object.
+             const users = await User.find({}).catch(exception);
+             
+             // Fetch all comments objects.
+             const comments = await Comment.find({}).populate('user').catch(exception);
+
              // Fetch all parent's replies objects.
              const parentReplies = await Reply.find({ parent: id }).populate('user').catch(exception);
              
