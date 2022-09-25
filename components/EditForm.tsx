@@ -21,7 +21,7 @@ const EditForm = ( { comment, reply } : EditFormProps ) => {
 
         // Set initial value to prefix and reply's content.
         if (reply) setContent(prefix + reply.content);
-    }, [comment, reply]);
+    }, [comment, reply, prefix]);
 
     // Manage input-prompt message state.
     const [ error, setError ] = useState<string>("");
