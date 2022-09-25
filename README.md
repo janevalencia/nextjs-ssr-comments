@@ -1,7 +1,5 @@
 Solution developed by **Jane Valencia, 2022**
 
-Production-LIVE URL: [fem-comments-interactive-by-janev](https://fem-comments-hucu-bewk2m616-janevalencia.vercel.app/)
-
 # Frontend Mentor - Interactive comments section
 
 ![Design preview for the Interactive comments section coding challenge](./design/desktop-preview.jpg)
