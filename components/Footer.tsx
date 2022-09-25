@@ -31,53 +31,53 @@ const Footer = ( props : FooterProps) => {
 
         {/* Social Links */}     
         <div className="footer__socials ">
-          <h3>Let's connect!</h3>
+          <h3>Let&apos;s connect!</h3>
           <div className="footer__socials-links flex flex-row justify-start align-middle gap-4">
             {/* GitHub */}
             { props.github && (
-              <a className="footer__social-link" href={ props.github } target="_blank" rel="noopener" >
+              <a className="footer__social-link" href={ props.github } target="_blank" rel="noreferrer" >
                 <FontAwesomeIcon icon={faGithub} />
               </a>
             ) }
 
             {/* LinkedIn */}
             { props.linkedin && (
-              <a className="footer__social-link" href={ props.linkedin } target="_blank" rel="noopener" >
+              <a className="footer__social-link" href={ props.linkedin } target="_blank" rel="noreferrer" >
                 <FontAwesomeIcon icon={ faLinkedin } />
               </a>
             ) }
 
             {/* Instagram */}
             { props.instagram && (
-              <a className="footer__social-link" href={ props.instagram } target="_blank" rel="noopener" >
+              <a className="footer__social-link" href={ props.instagram } target="_blank" rel="noreferrer" >
                 <FontAwesomeIcon icon={ faInstagram } />
               </a>
             ) }
 
             {/* Twitter */}
             { props.twitter && (
-              <a className="footer__social-link" href={ props.twitter } target="_blank" rel="noopener" >
+              <a className="footer__social-link" href={ props.twitter } target="_blank" rel="noreferrer" >
                 <FontAwesomeIcon icon={ faTwitter } />
               </a>
             ) }
 
             {/* YouTube */}
             { props.youtube && (
-              <a className="footer__social-link" href={ props.youtube } target="_blank" rel="noopener" >
+              <a className="footer__social-link" href={ props.youtube } target="_blank" rel="noreferrer" >
                 <FontAwesomeIcon icon={ faYoutube } />
               </a>
             ) }
 
             {/* Twitch */}
             { props.twitch && (
-              <a className="footer__social-link" href={ props.twitch } target="_blank" rel="noopener" >
+              <a className="footer__social-link" href={ props.twitch } target="_blank" rel="noreferrer" >
                 <FontAwesomeIcon icon={ faTwitch } />
               </a>
             ) }
 
             {/* Medium */}
             { props.medium && (
-              <a className="footer__social-link" href={ props.medium } target="_blank" rel="noopener" >
+              <a className="footer__social-link" href={ props.medium } target="_blank" rel="noreferrer" >
                 <FontAwesomeIcon icon={ faMedium } />
               </a>
             ) }
