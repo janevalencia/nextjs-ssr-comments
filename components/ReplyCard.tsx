@@ -17,26 +17,22 @@ const ReplyCard = ( { currentUser, reply } : ReplyCardProps ) => {
 
     // Manage state of Reply Form toggle (display / hide).
     const [ showReplyForm, setShowReplyForm ] = useState<boolean>(false);
-    const toggleReplyForm = () : void => {
-        setShowReplyForm(true);
-
-        if ( showReplyForm ) {
-            setShowReplyForm(false);
-        }
-    };
 
     // Manage state of Edit Form toggle (display / hide).
     const [ showEditForm, setEditForm ] = useState<boolean>(false);
-    const toggleEditForm = () : void => {
-        setEditForm(true);
-
-        if ( showEditForm ) {
-            setEditForm(false);
-        }
-    }
 
     // Manage state of Delete Modal toggle.
     const [ openModal, setOpenModal ] = useState<boolean>(false);
+    
+    // Toggle reply form.
+    const toggleReplyForm = () : void => {
+        setShowReplyForm(!showReplyForm);
+    };
+
+    // Toggle edit form.
+    const toggleEditForm = () : void => {
+        setEditForm(!showEditForm);
+    }
 
     // Handle delete reply.
     const handleDelete = async () : Promise<void> => {
