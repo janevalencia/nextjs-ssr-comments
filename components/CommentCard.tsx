@@ -16,32 +16,28 @@ const CommentCard = ( { currentUser, comment } : CommentCardProps ) => {
     // Get next-router.
     const router = useRouter();
 
+    // Manage state of Reply Form toggle (display / hide).
+    const [ showReplyForm, setShowReplyForm ] = useState<boolean>(false);
+    
+    // Manage state of Edit Form toggle (display / hide).
+    const [ showEditForm, setEditForm ] = useState<boolean>(false);
+
+    // Manage state of Delete Modal toggle.
+    const [ openModal, setOpenModal ] = useState<boolean>(false);
+
     // Manage this comment's list of replies (if exist).
     const { replies, isLoading, isError } = useReply(comment._id);
     if (isError) return <Spinner message="Failed to load ... Something is wrong!" /> 
 
-    // Manage state of Reply Form toggle (display / hide).
-    const [ showReplyForm, setShowReplyForm ] = useState<boolean>(false);
+    // Toggle reply form.
     const toggleReplyForm = () : void => {
-        setShowReplyForm(true);
-
-        if ( showReplyForm ) {
-            setShowReplyForm(false);
-        }
+        setShowReplyForm(!showReplyForm);
     };
 
-    // Manage state of Edit Form toggle (display / hide).
-    const [ showEditForm, setEditForm ] = useState<boolean>(false);
+    // Toggle edit form.
     const toggleEditForm = () : void => {
-        setEditForm(true);
-
-        if ( showEditForm ) {
-            setEditForm(false);
-        }
+        setEditForm(!showEditForm);
     }
-
-    // Manage state of Delete Modal toggle.
-    const [ openModal, setOpenModal ] = useState<boolean>(false);
 
     // Handle delete comment.
     const handleDelete = async () : Promise<void> => {
