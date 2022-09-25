@@ -12,13 +12,13 @@ type ModalProps = {
 
 const Modal = ( { isOpen, setOn, title, promptText, btnType, handleDelete } : ModalProps ) => {
 
-    if (!isOpen) return null;
-
     // Manage button enabled/disabled state.
     const [ disabled, setDisabled ] = useState<boolean>(false);
 
     // Manage loading state.
     const [ loading, setLoading ] = useState<boolean>(false);
+
+    if (!isOpen) return null;
 
     // Run when delete is confirmed.
     const confirmDelete = () : void => {
