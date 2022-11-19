@@ -1,20 +1,20 @@
 Solution developed by **Jane Valencia, 2022**
 
-# Frontend Mentor - Interactive comments section
+# Interactive Comments Section: NextJS with Typescript (SSR) / TailwindCSS
 
 ![Design preview for the Interactive comments section coding challenge](./design/desktop-preview.jpg)
 
 ## Welcome! 👋
 
-Thanks for checking out this front-end coding challenge.
+This challenge is originally from Frontend Mentor which has been extended so that it could be developed using the latest React framework, NextJS, and SSR technology.
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+**To do this challenge, you need a strong understanding of HTML, CSS, Javascript/Typescript, and React.**
 
-**To do this challenge, you need a strong understanding of HTML, CSS and JavaScript.**
+Your challenge is to build out this interactive comments section and get it looking as close to the design as possible. 
 
-Your challenge is to build out this interactive comments section and get it looking as close to the design as possible. You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
+You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
 
-We provide the sample data in a local `db.json` file to get you started! If you want to take it up a notch, feel free to build this as a full-stack CRUD application! 🚀
+We provide the sample data in a local `db.json` file to get you started!
 
 For the solution I develop here, I am taking it slightly further by using:
 - Full-stack React App with NextJS with Typescript
@@ -22,8 +22,6 @@ For the solution I develop here, I am taking it slightly further by using:
 - SASS
 - MongoDB / Mongoose
 - Other libraries: momentjs, swr, fontawesome
-
-Again, you are free to choose other framework to craft your solution for this fun challenge!
 
 **DISCLAIMER:** There are no such thing as "one solution fits all"! Hence, while comparing solution, if you figure out ways how I can further improve the project solution, please drop in to discussion. Let's all learn from each other!
 
@@ -56,23 +54,15 @@ You will find all the required assets in the `/design/assets` folder. The assets
 There is also a `style-guide.md` [file here](https://github.com/janevalencia/fem-comments/blob/staging/style-guide.md), containing the information you'll need, such as color palette and fonts.
 
 ## Development
+I have created a project https://github.com/janevalencia/nextjs-ssr-comments/projects/1 for this solution to outline my development processes as well as product backlog created to track my progress.
 
-Feel free to use any project management and development workflow that you feel comfortable with! 
+List of closed issues can be found [here](https://github.com/janevalencia/nextjs-ssr-comments/issues?q=is%3Aissue+is%3Aclosed).
 
-Below is a suggested process, but do not feel like you need to follow these steps:
-
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+Feel free to use any project management and development workflow that you feel comfortable with!
 
 ## Deployment
 
-As mentioned above, there are many ways to host your project for free. 
-
-Our recommended hosts are:
+My recommended hosts are:
 
 - [GitHub Pages](https://pages.github.com/)
 - [Vercel](https://vercel.com/) (recommended, if you are following this particular solution using NextJS)
@@ -80,23 +70,10 @@ Our recommended hosts are:
 
 You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
 
-## Submitting your solution to Frontend Mentor (FEM)
-
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this. 
-
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
-
-## Sharing your solution
-
-There are multiple places you can share your solution:
-
-1. Share your solution page in the **#finished-projects** channel of the [Slack community](https://www.frontendmentor.io/slack). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [Medium](https://medium.com), [DEV.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
-
 ## Last words
-I had a lot of fun building this challenge. Thank you for visiting this repo, and I hope you find this project useful! 
+I had a lot of fun building and extending this challenge. If you find this challenge and solution useful, please continue sharing it to others!
+
+Thank you for visiting my repository.
 
 **Have fun building!** 🚀
 
