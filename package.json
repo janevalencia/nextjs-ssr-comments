@@ -14,7 +14,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "moment": "^2.29.3",
     "mongodb": "^4.9.1",
-    "mongoose": "^6.5.0",
+    "mongoose": "^6.11.3",
     "next": "12.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
